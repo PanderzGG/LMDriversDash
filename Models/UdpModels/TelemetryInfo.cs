@@ -11,7 +11,7 @@ public class TelemetryInfo
     public double ElapsedTime { get; set; }
 
     [JsonPropertyName("mDeltaTime")]
-    public double DeltaTime { get; set; } // Frame-Zeit in Sekunden
+    public double DeltaTime { get; set; } // Frame time in seconds
 
     [JsonPropertyName("mTrackName")]
     public string? TrackName { get; set; }
@@ -19,7 +19,7 @@ public class TelemetryInfo
     [JsonPropertyName("mVehicleName")]
     public string? VehicleName { get; set; }
     
-    // Fahrzeug-Status
+    // Vehicle-Status
     [JsonPropertyName("mGear")]
     public int Gear { get; set; }
     [JsonPropertyName("mEngineRPM")]
@@ -35,7 +35,7 @@ public class TelemetryInfo
     [JsonPropertyName("mSpeedLimiter")]
     public int SpeedLimiter { get; set; } // 0=off, 1=on
 
-    // Fahrereingaben (gefiltert)
+    // Player Inputs (filtered)
     [JsonPropertyName("mFilteredThrottle")]
     public float FilteredThrottle { get; set; }
     [JsonPropertyName("mFilteredBrake")]
@@ -45,13 +45,13 @@ public class TelemetryInfo
     [JsonPropertyName("mFilteredSteering")]
     public float FilteredSteering { get; set; }
     
-    // Temperaturen
+    // Temperatures
     [JsonPropertyName("mEngineWaterTemp")]
     public float EngineWaterTemp { get; set; }
     [JsonPropertyName("mEngineOilTemp")]
     public float EngineOilTemp { get; set; }
     
-    // Position und Physik (als verschachtelte Objekte)
+    // Positions and physics (objects)
     [JsonPropertyName("mPos")]
     public LmuVector3? Position { get; set; }
     [JsonPropertyName("mLocalAccel")]
@@ -59,11 +59,11 @@ public class TelemetryInfo
     [JsonPropertyName("mLocalVel")]
     public LmuVector3? LocalVelocity { get; set; }
     
-    // Rad-Informationen
+    // Wheel information
     [JsonPropertyName("mWheel")]
     public LmuWheel[]? Wheel { get; set; }
     
-    // Reifen-Informationen
+    // Tire information
     [JsonPropertyName("mFrontTireCompoundName")]
     public string? FrontTireCompoundName { get; set; }
     [JsonPropertyName("mRearTireCompoundName")]

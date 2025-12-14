@@ -29,9 +29,9 @@ public class ScoringInfo
     [JsonPropertyName("mTrackTemp")]
     public float TrackTemperature { get; set; }
     [JsonPropertyName("mRaining")]
-    public float Raining { get; set; } // Regenintensität (0-1)
+    public float Raining { get; set; } // Rain intensity (0-1)
 
-    // Das Hauptarray mit allen Fahrzeugdaten
+    // Main array with info of all players
     [JsonPropertyName("mVehicles")]
     public List<LmuVehicleInfo>? Vehicles { get; set; }
 }
