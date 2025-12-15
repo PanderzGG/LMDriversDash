@@ -36,6 +36,7 @@ public class GameDataService : IGameDataService
     // private attributes
     // Polling Interval for Http
     private TimeSpan _pollInterval = TimeSpan.FromSeconds(1);
+    private bool isHttpConnected = false;
     
     public GameDataService(IHttpClientService httpClientService, IUdpClientService udpClientService)
     {
@@ -56,10 +57,11 @@ public class GameDataService : IGameDataService
                     }
                     catch (Exception ex)
                     {
+                        isHttpConnected = false;
                         Debug.WriteLine("==================================");
                         Debug.WriteLine("GameDataService::RunOnStartupAsync:: L59: Error: Can't get game state. Is the game running?");
                         Debug.WriteLine("==================================");
-                        HttpConnection?.Invoke(this, false);
+                        HttpConnection?.Invoke(this, isHttpConnected);
                     }
                     await Task.Delay(_pollInterval, _cancellationTokenSource.Token);
                 }
@@ -89,6 +91,12 @@ public class GameDataService : IGameDataService
         if (stateChanged)
         {
             HttpGameStateChanged?.Invoke(this, new HttpGameStateChangedEvent(oldState, CurrentState));
+            // If Client recieves a valid change fire valid connection
+            if (!isHttpConnected)
+            {
+                isHttpConnected = true;
+                HttpConnection?.Invoke(this, isHttpConnected);    
+            }
             UpdatePollInterval(newState);
         }
 

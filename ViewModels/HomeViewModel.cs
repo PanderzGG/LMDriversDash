@@ -26,14 +26,15 @@ public partial class HomeViewModel : PageViewModel
         // Subscribe to Events
         _gameDataService.HttpGameStateChanged += OnGameStateChanged;
         _gameDataService.HttpProfileInfoReceived += OnPlayerProfileReceived;
-        _gameDataService.HttpConnection += OnHttpConnectionLost;
+        _gameDataService.HttpConnection += OnHttpConnectionStatus;
 
-        CheckForHttpInfo(httpIsConnected);
+        CheckForHttpInfo();
     }
 
-    private void OnHttpConnectionLost(object? sender, bool e)
+    private void OnHttpConnectionStatus(object? sender, bool e)
     {
-        httpIsConnected = false;
+        httpIsConnected = e;
+        CheckForHttpInfo();
     }
 
     private void OnPlayerProfileReceived(object? sender, HttpProfileInfoReceivedEvent e)
@@ -42,7 +43,7 @@ public partial class HomeViewModel : PageViewModel
         {
             PlayerName = $"{e.HttpProfileInfo.Name}!";    
         }
-        CheckForHttpInfo(httpIsConnected);
+        CheckForHttpInfo();
     }
 
     private void OnGameStateChanged(object? sender, HttpGameStateChangedEvent e)
@@ -50,10 +51,10 @@ public partial class HomeViewModel : PageViewModel
         Debug.WriteLine($"Game state changed to {e.NewState?.NavigationState}");
     }
 
-    private void CheckForHttpInfo(bool isConnected)
+    private void CheckForHttpInfo()
     {
         // TODO Maybe get rid of magic strings an put the colors into a resource or something idk
-        if (PlayerName != "!")
+        if (httpIsConnected)
         {
             httpIsConnected = true;
             ConnectionColor = "#4CAF50"; // Green
