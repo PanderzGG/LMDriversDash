@@ -26,6 +26,7 @@ public class GameDataService : IGameDataService
     public event EventHandler<HttpGameStateChangedEvent> HttpGameStateChanged;
     public event EventHandler<HttpProfileInfoReceivedEvent> HttpProfileInfoReceived;
     public event EventHandler<bool> HttpConnection;
+    public event EventHandler<bool> UdpConnection;
     
     // UDP Events
     public event EventHandler<TelemetryDataReceivedEvent>? UdpTelemetryDataReceived;
@@ -42,6 +43,7 @@ public class GameDataService : IGameDataService
     // Polling Interval for Http
     private TimeSpan _pollInterval = TimeSpan.FromSeconds(1);
     private bool isHttpConnected = false;
+    private bool isUdpConnected = false;
     
     public GameDataService(IHttpClientService httpClientService, IUdpClientService udpClientService)
     {
@@ -108,41 +110,38 @@ public class GameDataService : IGameDataService
                 HttpConnection?.Invoke(this, isHttpConnected);    
             }
             UpdatePollInterval(newState);
-        }
-
-
-        switch (isHttpConnected)
-        {
-            case true:
-                if (CurrentState.NavigationState == HttpGameStates.PlayerInPits || CurrentState.NavigationState == HttpGameStates.PlayerOnTrack)
-                {
-                    if (!_udpClientService.getIsRunning())
-                    {
-                        _udpClientService.StartUpAsync();
-                    }
-                }
-                else
-                {
-                    if (_udpClientService.getIsRunning())
-                    {
-                        _udpClientService.Stop();
-                    }
-                }
-                break;
-            case false:
-                _udpClientService.Stop();
-                break;
-            default:
-                _udpClientService.Stop();
-                break;
-        }
-        // TODO Check if udp is running and display on home
-
-        if (isHttpConnected && CurrentState.NavigationState == HttpGameStates.PlayerInMainMenu)
-        {
-            if (_udpClientService.getIsRunning())
+            
+            // Handle Udp Client Runtime
+            if (isHttpConnected)
             {
-                _udpClientService.Stop();
+                switch (CurrentState.NavigationState)
+                {
+                    case HttpGameStates.PlayerInMainMenu:
+                        if (_udpClientService.getIsRunning())
+                        {
+                            _udpClientService.Stop();
+                            isUdpConnected = false;
+                            UdpConnection?.Invoke(this, isUdpConnected);
+                        }
+                        break;
+                    case HttpGameStates.PlayerOnTrack:
+                        if (!_udpClientService.getIsRunning())
+                        {
+                            _ = _udpClientService.StartUpAsync();
+                            isUdpConnected = true;
+                            UdpConnection?.Invoke(this, isUdpConnected);
+                        }
+                        break;
+                    case HttpGameStates.PlayerInPits:
+                        if (!_udpClientService.getIsRunning())
+                        {
+                            _ = _udpClientService.StartUpAsync();
+                            isUdpConnected = true;
+                            UdpConnection?.Invoke(this, isUdpConnected);
+                        }
+                        break;
+                                
+                }
             }
         }
         
