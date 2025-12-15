@@ -3,18 +3,60 @@
         xmlns:vm="using:LMDriversDash.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="1280" d:DesignHeight="820"
         x:Class="LMDriversDash.Views.MainView"
         x:DataType="vm:MainViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="LMDriversDash">
+        Title="LMDriversDash"
+        Width="1280"
+        Height="820"
+        MinWidth="950"
+        MinHeight="650">
 
     <Design.DataContext>
-        <!-- This only sets the DataContext for the previewer in an IDE,
-             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainViewModel/>
     </Design.DataContext>
-
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-
+    
+    <!-- Main Layoutgrid -->
+    <Grid Background="{DynamicResource PrimaryBackground}" ColumnDefinitions="Auto, *">
+        <!-- Main Content on the right side -->
+        <ContentControl Grid.Column="1"
+                        Padding="24"
+                        Content="{Binding CurrentPage}"/>
+        <Border Grid.Column="0"
+                Padding="15"
+                Background="{DynamicResource PrimaryMenuBackground}"
+                BorderBrush="{DynamicResource BorderBrush}"
+                Width="260">
+            <Grid RowDefinitions="Auto, *, Auto">
+                <!--App Title-->
+                <StackPanel Grid.Row="0"
+                            Margin="5,5,5,20">
+                    <TextBlock Text="LMDriversDash"
+                               FontSize="18"
+                               FontWeight="Bold"
+                               Foreground="{DynamicResource MenuActiveText}"
+                               HorizontalAlignment="Center"/>
+                    <Border Height="1"
+                            Background="{DynamicResource BorderBrush}"/>
+                </StackPanel>
+                <!-- Nav Buttons -->
+                <StackPanel Grid.Row="1"
+                            Spacing="8">
+                    <Button HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Left"
+                            Padding="12, 10"
+                            Classes.active="{Binding HomePageIsActive}" 
+                            Classes="MenuButton" 
+                            Command="{Binding GoToHomeCommand}">
+                        <StackPanel Orientation="Horizontal"
+                                    Spacing="10">
+                            <TextBlock Text="H" VerticalAlignment="Center"/>
+                            <TextBlock Text="Home" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
 </Window>

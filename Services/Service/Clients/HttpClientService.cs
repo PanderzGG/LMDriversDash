@@ -46,8 +46,24 @@ public class HttpClientService : IHttpClientService
         return state;
     }
 
-    public Task<HttpProfileInfo> GetHttpProfileInfoAsync()
+    public async Task<HttpProfileInfo?>? GetHttpProfileInfoAsync()
     {
-        throw new NotImplementedException();
+        HttpProfileInfo profileInfo = new HttpProfileInfo();
+
+        try
+        {
+            using HttpResponseMessage response = await _client.GetAsync($"{_baseAddress}{HttpNavigation.GetProfileInfo}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                profileInfo = JsonSerializer.Deserialize<HttpProfileInfo>(await response.Content.ReadAsStringAsync());
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"HttpClientService::GetHttpProfileInfoAsync:: Can't get response from HTTP API");
+        }
+
+        return profileInfo;
     }
 }

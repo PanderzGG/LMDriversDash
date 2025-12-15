@@ -11,6 +11,7 @@ public interface IGameDataService
     // Needed Events
     event EventHandler<HttpGameStateChangedEvent> HttpGameStateChanged;
     event EventHandler<HttpProfileInfoReceivedEvent> HttpProfileInfoReceived;
+    event EventHandler<bool> HttpConnection;
     // Needed Properties
     LoadingStatus? LoadingStatus { get; set; }
     State? CurrentState { get; set; }

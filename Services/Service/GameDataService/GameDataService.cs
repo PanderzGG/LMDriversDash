@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Net.Http;
 using System.Reflection.Metadata.Ecma335;
 using System.Threading;
 using System.Threading.Tasks;
@@ -23,6 +24,7 @@ public class GameDataService : IGameDataService
     // Events
     public event EventHandler<HttpGameStateChangedEvent> HttpGameStateChanged;
     public event EventHandler<HttpProfileInfoReceivedEvent> HttpProfileInfoReceived;
+    public event EventHandler<bool> HttpConnection;
     
     // Public Properties
     public LoadingStatus? LoadingStatus { get; set; }
@@ -48,7 +50,17 @@ public class GameDataService : IGameDataService
             {
                 while (!_cancellationTokenSource.Token.IsCancellationRequested)
                 {
-                    await PollGameState();
+                    try
+                    {
+                        await PollGameState();
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine("==================================");
+                        Debug.WriteLine("GameDataService::RunOnStartupAsync:: L59: Error: Can't get game state. Is the game running?");
+                        Debug.WriteLine("==================================");
+                        HttpConnection?.Invoke(this, false);
+                    }
                     await Task.Delay(_pollInterval, _cancellationTokenSource.Token);
                 }
             }, _cancellationTokenSource.Token
@@ -57,9 +69,17 @@ public class GameDataService : IGameDataService
 
     private async Task PollGameState()
     {
+        Debug.WriteLine("==================================");
+        Debug.WriteLine("==================================");
+        Debug.WriteLine("GameDataService::RunOnStartupAsync");
+        Debug.WriteLine("Polling new State");
+        Debug.WriteLine("==================================");
+        Debug.WriteLine("==================================");
         // Get current GameState from HTTP
-        var newState = await _httpClientService.GetHttpGameStateAsync();
-        if (newState != null) return;
+        var newState = new State();
+        
+        newState = await _httpClientService.GetHttpGameStateAsync();
+        
         
         // Test for Changes
         var stateChanged = CurrentState?.NavigationState != newState?.NavigationState;
@@ -123,6 +143,6 @@ public class GameDataService : IGameDataService
 
     public void Stop()
     {
-        throw new System.NotImplementedException();
+        _cancellationTokenSource.Cancel();
     }
 }

@@ -2,7 +2,60 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="LMDriversDash.Views.HomeView">
-    Welcome to Avalonia!
+             mc:Ignorable="d" d:DesignWidth="972" d:DesignHeight="820"
+             xmlns:vm="clr-namespace:LMDriversDash.ViewModels"
+             x:DataType="vm:HomeViewModel"
+             x:Class="LMDriversDash.Views.HomeView"
+             MinWidth="642"
+             HorizontalAlignment="Stretch">
+    <Design.DataContext>
+        <vm:HomeViewModel/>
+    </Design.DataContext>
+    
+    <Grid Background="{DynamicResource PrimaryBackground}"
+          RowDefinitions="Auto, *, Auto"
+          ColumnDefinitions="*, *, *, *">
+        <Border Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="4"
+                HorizontalAlignment="Stretch"
+                Background="{DynamicResource InfoCardBackground}"
+                BorderBrush="{DynamicResource BorderBrush}">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Welcome back "
+                           FontSize="28"
+                           FontWeight="Bold"
+                           Foreground="{DynamicResource MenuActiveText}"/>
+                <TextBlock Text="{Binding PlayerName}"
+                           FontSize="28"
+                           FontWeight="Bold"
+                           Foreground="{DynamicResource PrimaryText}"/>
+            </StackPanel>
+        </Border>
+        
+        
+        <Border Grid.Row="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="4"
+                HorizontalAlignment="Stretch"
+                Background="{DynamicResource InfoCardBackground}"
+                BorderBrush="{DynamicResource BorderBrush}">
+            <StackPanel Orientation="Horizontal"
+                        Margin="10,5,10,5"
+                        Spacing="20">
+                <StackPanel Orientation="Horizontal"
+                            Spacing="5">
+                    <TextBlock Text="HttpClient Connection"
+                               Foreground="{DynamicResource PrimaryText}"/>
+                    <Ellipse Grid.Column="1" Width="12" Height="12" Fill="{Binding ConnectionColor}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            Spacing="5">
+                    <TextBlock Text="UdpClient Connection"
+                               Foreground="{DynamicResource PrimaryText}"/>
+                    <Ellipse Grid.Column="1" Width="12" Height="12" Fill="#4CAF50"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
 </UserControl>

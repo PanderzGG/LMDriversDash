@@ -41,13 +41,13 @@ public partial class App : Application
         });
 
         collection.AddSingleton<PageFactory>();
-        collection.AddSingleton<IHttpClientService, IHttpClientService>();
+        collection.AddSingleton<IHttpClientService, HttpClientService>();
         collection.AddSingleton<IUdpClientService, UdpClientService>();
         collection.AddSingleton<IGameDataService, GameDataService>();
         
         var serviceProvider = collection.BuildServiceProvider();
         
-        var gamStateService = serviceProvider.GetRequiredService<IGameDataService>();
+        var gameStateService = serviceProvider.GetRequiredService<IGameDataService>();
         var httpClientService = serviceProvider.GetRequiredService<IHttpClientService>();
         var udpClientService = serviceProvider.GetRequiredService<IUdpClientService>();
         
@@ -60,9 +60,16 @@ public partial class App : Application
             {
                 DataContext = serviceProvider.GetRequiredService<MainViewModel>(),
             };
+            
+            desktop.ShutdownRequested += (s, e) =>
+            {
+                gameStateService.Stop();
+            };
         }
 
         base.OnFrameworkInitializationCompleted();
+        // Start of Gamestate retrieval
+        gameStateService.RunOnStartupAsync();
     }
 
     private void DisableAvaloniaDataAnnotationValidation()

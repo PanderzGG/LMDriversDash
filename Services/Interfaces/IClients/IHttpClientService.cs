@@ -7,5 +7,5 @@ namespace LMDriversDash.Services.Interfaces.IClients;
 public interface IHttpClientService
 {
     Task<State> GetHttpGameStateAsync();
-    Task<HttpProfileInfo> GetHttpProfileInfoAsync();
+    Task<HttpProfileInfo?>? GetHttpProfileInfoAsync();
 }
