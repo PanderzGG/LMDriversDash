@@ -65,6 +65,7 @@ public partial class HomeViewModel : PageViewModel
         {
             httpIsConnected = false;
             ConnectionColor = "#fc0328"; // Red
+            HttpGameState = "---";
         }
     }
     
