@@ -10,7 +10,6 @@
     <ItemGroup>
         <AvaloniaResource Include="Assets\**" />
         <Folder Include="Services\Events\" />
-        <Folder Include="UsefulData\HttpNavigation\" />
     </ItemGroup>
 
     <ItemGroup>

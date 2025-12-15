@@ -1,10 +1,39 @@
 ﻿<Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
-        <Border Padding="20">
+        <Border Padding="20" Background="{DynamicResource PrimaryMenuBackground}">
             <!-- Add Controls for Previewer Here -->
+            <Button Foreground="{DynamicResource PrimaryText}" Classes="MenuButton">Home</Button>
         </Border>
     </Design.PreviewWith>
 
     <!-- Add Styles Here -->
+    
+    <Style Selector="Window">
+        
+    </Style>
+    
+    <Style Selector="Button">
+        <Setter Property="FontSize" Value="20"></Setter>
+        <Setter Property="CornerRadius" Value="5"></Setter>
+    </Style>
+    
+    <Style Selector="Button.active /template/ ContentPresenter">
+        <Setter Property="Foreground" Value="{DynamicResource MenuActiveText}"></Setter>
+    </Style>
+    
+    <Style Selector="Button.MenuButton">
+        <Setter Property="Background" Value="{DynamicResource PrimaryMenuBackground}"></Setter>
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryText}"></Setter>
+    </Style>
+    
+    <Style Selector="Button.MenuButton:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource MenuHoverBackground}"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+    </Style>
+    
+    <Style Selector="Button.active:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource MenuActiveBackgroundSemiTransparent}"></Setter>
+        <Setter Property="Foreground" Value="{DynamicResource MenuActiveText}"></Setter>
+    </Style>
 </Styles>
