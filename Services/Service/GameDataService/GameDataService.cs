@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using LMDriversDash.Models.HttpModels.GameState;
 using LMDriversDash.Models.HttpModels.InfoModels;
 using LMDriversDash.Services.Events;
+using LMDriversDash.Services.Events.Udp_Events;
 using LMDriversDash.Services.Interfaces.IClients;
 using LMDriversDash.Services.Interfaces.IGameState;
 using LMDriversDash.UsefulData.GameState;
@@ -21,11 +22,15 @@ public class GameDataService : IGameDataService
     // Cancellation Token to be abort infinite loop
     private readonly CancellationTokenSource _cancellationTokenSource = new();
     
-    // Events
+    // HTTP Events
     public event EventHandler<HttpGameStateChangedEvent> HttpGameStateChanged;
     public event EventHandler<HttpProfileInfoReceivedEvent> HttpProfileInfoReceived;
     public event EventHandler<bool> HttpConnection;
     
+    // UDP Events
+    public event EventHandler<TelemetryDataReceivedEvent>? UdpTelemetryDataReceived;
+    public event EventHandler<ScoringDataReceivedEvent>? UdpScoringDataReceived;
+
     // Public Properties
     public LoadingStatus? LoadingStatus { get; set; }
     
@@ -46,6 +51,12 @@ public class GameDataService : IGameDataService
     
     public async Task RunOnStartupAsync()
     {
+        // Subscribe to events on startup
+        _udpClientService.TelemetryDataReceived += (s, d) =>
+            UdpTelemetryDataReceived?.Invoke(this, new TelemetryDataReceivedEvent(d));
+        _udpClientService.ScoringDataReceived += (s, d) =>
+            UdpScoringDataReceived?.Invoke(this, new ScoringDataReceivedEvent(d));
+        
         // HTTP GameState Polling
         _ = Task.Run(async () =>
             {
@@ -99,6 +110,42 @@ public class GameDataService : IGameDataService
             UpdatePollInterval(newState);
         }
 
+
+        switch (isHttpConnected)
+        {
+            case true:
+                if (CurrentState.NavigationState == HttpGameStates.PlayerInPits || CurrentState.NavigationState == HttpGameStates.PlayerOnTrack)
+                {
+                    if (!_udpClientService.getIsRunning())
+                    {
+                        _udpClientService.StartUpAsync();
+                    }
+                }
+                else
+                {
+                    if (_udpClientService.getIsRunning())
+                    {
+                        _udpClientService.Stop();
+                    }
+                }
+                break;
+            case false:
+                _udpClientService.Stop();
+                break;
+            default:
+                _udpClientService.Stop();
+                break;
+        }
+        // TODO Check if udp is running and display on home
+
+        if (isHttpConnected && CurrentState.NavigationState == HttpGameStates.PlayerInMainMenu)
+        {
+            if (_udpClientService.getIsRunning())
+            {
+                _udpClientService.Stop();
+            }
+        }
+        
         if (string.IsNullOrWhiteSpace(HttpProfileInfo?.Name))
         {
             try
