@@ -9,14 +9,7 @@
 
     <ItemGroup>
         <AvaloniaResource Include="Assets\**"/>
-        <Folder Include="Models\HttpModels\GameState\" />
-        <Folder Include="Models\HttpModels\InfoModels\" />
         <Folder Include="Services\Events\" />
-        <Folder Include="Services\Interfaces\IClients\" />
-        <Folder Include="Services\Interfaces\IGameState\" />
-        <Folder Include="Services\Service\Clients\" />
-        <Folder Include="Services\Service\GameState\" />
-        <Folder Include="Styles\" />
         <Folder Include="UsefulData\GameState\" />
         <Folder Include="UsefulData\HttpNavigation\" />
     </ItemGroup>

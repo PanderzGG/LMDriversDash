@@ -1,4 +1,6 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
+using LMDriversDash.Models.UdpVehicleModels;
 
 namespace LMDriversDash.Models.UdpModels;
 
@@ -61,7 +63,7 @@ public class TelemetryInfo
     
     // Wheel information
     [JsonPropertyName("mWheel")]
-    public LmuWheel[]? Wheel { get; set; }
+    public List<LmuWheel>? Wheel { get; set; }
     
     // Tire information
     [JsonPropertyName("mFrontTireCompoundName")]
