@@ -43,11 +43,11 @@ public partial class App : Application
         collection.AddSingleton<PageFactory>();
         collection.AddSingleton<IHttpClientService, IHttpClientService>();
         collection.AddSingleton<IUdpClientService, UdpClientService>();
-        collection.AddSingleton<IGameStateService, GameStateService>();
+        collection.AddSingleton<IGameDataService, GameDataService>();
         
         var serviceProvider = collection.BuildServiceProvider();
         
-        var gamStateService = serviceProvider.GetRequiredService<IGameStateService>();
+        var gamStateService = serviceProvider.GetRequiredService<IGameDataService>();
         var httpClientService = serviceProvider.GetRequiredService<IHttpClientService>();
         var udpClientService = serviceProvider.GetRequiredService<IUdpClientService>();
         

@@ -1,11 +1,16 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using LMDriversDash.Models.HttpModels.GameState;
 using LMDriversDash.Models.HttpModels.InfoModels;
+using LMDriversDash.Services.Events;
 
 namespace LMDriversDash.Services.Interfaces.IGameState;
 
-public interface IGameStateService
+public interface IGameDataService
 {
+    // Needed Events
+    event EventHandler<HttpGameStateChangedEvent> HttpGameStateChanged;
+    event EventHandler<HttpProfileInfoReceivedEvent> HttpProfileInfoReceived;
     // Needed Properties
     LoadingStatus? LoadingStatus { get; set; }
     State? CurrentState { get; set; }
