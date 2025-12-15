@@ -82,13 +82,12 @@ public class GameDataService : IGameDataService
         
         newState = await _httpClientService.GetHttpGameStateAsync();
         
-        
         // Test for Changes
         var stateChanged = CurrentState?.NavigationState != newState?.NavigationState;
         var oldState = CurrentState;
         CurrentState = newState;
 
-        if (stateChanged)
+        if (stateChanged || oldState == null)
         {
             HttpGameStateChanged?.Invoke(this, new HttpGameStateChangedEvent(oldState, CurrentState));
             // If Client recieves a valid change fire valid connection

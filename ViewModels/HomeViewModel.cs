@@ -12,6 +12,7 @@ public partial class HomeViewModel : PageViewModel
 
     // Properties for UI
     [ObservableProperty] private string _playerName = "!";
+    [ObservableProperty] private string _httpGameState = "---";
     [ObservableProperty] private string _connectionColor;
     
     // In Class attributes
@@ -48,7 +49,7 @@ public partial class HomeViewModel : PageViewModel
 
     private void OnGameStateChanged(object? sender, HttpGameStateChangedEvent e)
     {
-        Debug.WriteLine($"Game state changed to {e.NewState?.NavigationState}");
+        HttpGameState = e.NewState.NavigationState;
     }
 
     private void CheckForHttpInfo()
