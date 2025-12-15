@@ -13,6 +13,7 @@ public interface IGameDataService
     event EventHandler<HttpGameStateChangedEvent> HttpGameStateChanged;
     event EventHandler<HttpProfileInfoReceivedEvent> HttpProfileInfoReceived;
     event EventHandler<bool> HttpConnection;
+    event EventHandler<bool> UdpConnection;
     
     // UDP Events
     event EventHandler<TelemetryDataReceivedEvent> UdpTelemetryDataReceived;

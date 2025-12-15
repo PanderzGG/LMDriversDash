@@ -13,10 +13,12 @@ public partial class HomeViewModel : PageViewModel
     // Properties for UI
     [ObservableProperty] private string _playerName = "!";
     [ObservableProperty] private string _httpGameState = "---";
-    [ObservableProperty] private string _connectionColor;
+    [ObservableProperty] private string _httpConnectionColor = "#fc0328";
+    [ObservableProperty] private string _UdpConnectionColor = "#fc0328";
     
     // In Class attributes
     private bool httpIsConnected = false;
+    private bool udpIsConnected = false;
     
 
     public HomeViewModel(IGameDataService gameDataService)
@@ -28,8 +30,15 @@ public partial class HomeViewModel : PageViewModel
         _gameDataService.HttpGameStateChanged += OnGameStateChanged;
         _gameDataService.HttpProfileInfoReceived += OnPlayerProfileReceived;
         _gameDataService.HttpConnection += OnHttpConnectionStatus;
+        _gameDataService.UdpConnection += OnUdpConnectionStatus;
 
         CheckForHttpInfo();
+    }
+
+    private void OnUdpConnectionStatus(object? sender, bool e)
+    {
+        udpIsConnected = e;
+        CheckForUdpInfo();
     }
 
     private void OnHttpConnectionStatus(object? sender, bool e)
@@ -54,18 +63,27 @@ public partial class HomeViewModel : PageViewModel
 
     private void CheckForHttpInfo()
     {
-        // TODO Maybe get rid of magic strings an put the colors into a resource or something idk
-        if (httpIsConnected)
+        switch (httpIsConnected)
         {
-            httpIsConnected = true;
-            ConnectionColor = "#4CAF50"; // Green
-
+            case true:
+                HttpConnectionColor = "#4CAF50"; // Green
+                break;
+            case false:
+                HttpConnectionColor = "#fc0328"; // Red
+                HttpGameState = "---";
+                break;
         }
-        else
+    }
+    private void CheckForUdpInfo()
+    {
+        switch (udpIsConnected)
         {
-            httpIsConnected = false;
-            ConnectionColor = "#fc0328"; // Red
-            HttpGameState = "---";
+            case true:
+                UdpConnectionColor = "#4CAF50"; // Green
+                break;
+            case false:
+                UdpConnectionColor = "#fc0328"; // Red
+                break;
         }
     }
     

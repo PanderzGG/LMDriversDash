@@ -108,6 +108,9 @@ public class UdpClientService : IUdpClientService
                     {
                         ScoringDataReceived?.Invoke(this, scoringInfo);
                         lastScoring = now;
+                        Debug.WriteLine("============================");
+                        Debug.WriteLine("Scoring Received");
+                        Debug.WriteLine("============================");
                     }
                     break;
                 default:
