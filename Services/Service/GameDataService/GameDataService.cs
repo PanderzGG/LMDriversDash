@@ -94,6 +94,16 @@ public class GameDataService : IGameDataService
         var newState = new State();
         
         newState = await _httpClientService.GetHttpGameStateAsync();
+
+        if (string.IsNullOrWhiteSpace(newState.NavigationState))
+        {
+            if (isHttpConnected)
+            {
+                isHttpConnected = false;
+                HttpConnection?.Invoke(this, isHttpConnected);
+            }
+            return;
+        }
         
         // Test for Changes
         var stateChanged = CurrentState?.NavigationState != newState?.NavigationState;
@@ -140,7 +150,6 @@ public class GameDataService : IGameDataService
                             UdpConnection?.Invoke(this, isUdpConnected);
                         }
                         break;
-                                
                 }
             }
         }
