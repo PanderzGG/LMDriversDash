@@ -55,6 +55,30 @@
                             <TextBlock Text="Home" VerticalAlignment="Center"/>
                         </StackPanel>
                     </Button>
+                    <Button HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Left"
+                            Padding="12, 10"
+                            Classes.active="{Binding SessionPageIsActive}" 
+                            Classes="MenuButton" 
+                            Command="{Binding GoToHomeCommand}">
+                        <StackPanel Orientation="Horizontal"
+                                    Spacing="10">
+                            <TextBlock Text="S" VerticalAlignment="Center"/>
+                            <TextBlock Text="Session" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    <Button HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Left"
+                            Padding="12, 10"
+                            Classes.active="{Binding DrivePageIsactive}" 
+                            Classes="MenuButton" 
+                            Command="{Binding GoToHomeCommand}">
+                        <StackPanel Orientation="Horizontal"
+                                    Spacing="10">
+                            <TextBlock Text="D" VerticalAlignment="Center"/>
+                            <TextBlock Text="Drive" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
                 </StackPanel>
             </Grid>
         </Border>

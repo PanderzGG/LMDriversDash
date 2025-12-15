@@ -13,9 +13,13 @@ public partial class MainViewModel : ViewModelBase
     
     [ObservableProperty]
     [NotifyPropertyChangedFor(nameof(HomePageIsActive))]
+    [NotifyPropertyChangedFor(nameof(SessionPageIsActive))]
+    [NotifyPropertyChangedFor(nameof(DrivePageIsactive))]
     private PageViewModel _currentPage;
 
     public bool HomePageIsActive => CurrentPage.PageName == ApplicationPageNames.Home;
+    public bool SessionPageIsActive => CurrentPage.PageName == ApplicationPageNames.Session;
+    public bool DrivePageIsactive => CurrentPage.PageName == ApplicationPageNames.Drive;
     
     public MainViewModel(PageFactory pageFactory)
     {
