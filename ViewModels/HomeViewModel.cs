@@ -1,6 +1,6 @@
 ﻿namespace LMDriversDash.ViewModels;
 
-public class HomeViewModel
+public class HomeViewModel : PageViewModel
 {
     
 }
