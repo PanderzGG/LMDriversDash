@@ -27,24 +27,17 @@ public partial class HomeViewModel : PageViewModel
         PageName = ApplicationPageNames.Home;
 
         // Subscribe to Events
-        _gameDataService.HttpGameStateChanged += OnGameStateChanged;
         _gameDataService.HttpProfileInfoReceived += OnPlayerProfileReceived;
-        _gameDataService.HttpConnection += OnHttpConnectionStatus;
-        _gameDataService.UdpConnection += OnUdpConnectionStatus;
 
-        CheckForHttpInfo();
+        getPlayerName();
     }
 
-    private void OnUdpConnectionStatus(object? sender, bool e)
+    private void getPlayerName()
     {
-        udpIsConnected = e;
-        CheckForUdpInfo();
-    }
-
-    private void OnHttpConnectionStatus(object? sender, bool e)
-    {
-        httpIsConnected = e;
-        CheckForHttpInfo();
+        if (_gameDataService.HttpProfileInfo != null)
+        {
+            PlayerName = $"{_gameDataService.HttpProfileInfo.Name}!";    
+        }
     }
 
     private void OnPlayerProfileReceived(object? sender, HttpProfileInfoReceivedEvent e)
@@ -52,38 +45,6 @@ public partial class HomeViewModel : PageViewModel
         if (!string.IsNullOrWhiteSpace(e.HttpProfileInfo.Name))
         {
             PlayerName = $"{e.HttpProfileInfo.Name}!";    
-        }
-        CheckForHttpInfo();
-    }
-
-    private void OnGameStateChanged(object? sender, HttpGameStateChangedEvent e)
-    {
-        HttpGameState = e.NewState.NavigationState;
-    }
-
-    private void CheckForHttpInfo()
-    {
-        switch (httpIsConnected)
-        {
-            case true:
-                HttpConnectionColor = "#4CAF50"; // Green
-                break;
-            case false:
-                HttpConnectionColor = "#fc0328"; // Red
-                HttpGameState = "---";
-                break;
-        }
-    }
-    private void CheckForUdpInfo()
-    {
-        switch (udpIsConnected)
-        {
-            case true:
-                UdpConnectionColor = "#4CAF50"; // Green
-                break;
-            case false:
-                UdpConnectionColor = "#fc0328"; // Red
-                break;
         }
     }
     

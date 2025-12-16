@@ -33,11 +33,11 @@ public class GameDataService : IGameDataService
     public event EventHandler<ScoringDataReceivedEvent>? UdpScoringDataReceived;
 
     // Public Properties
-    public LoadingStatus? LoadingStatus { get; set; }
+    public LoadingStatus? LoadingStatus { get; private set; }
     
-    public State? CurrentState { get; set; }
+    public State? CurrentState { get; private set; }
     
-    public HttpProfileInfo? HttpProfileInfo { get; set; }
+    public HttpProfileInfo? HttpProfileInfo { get; private set; }
     
     // private attributes
     // Polling Interval for Http
@@ -94,6 +94,16 @@ public class GameDataService : IGameDataService
         var newState = new State();
         
         newState = await _httpClientService.GetHttpGameStateAsync();
+
+        if (string.IsNullOrWhiteSpace(newState.NavigationState))
+        {
+            if (isHttpConnected)
+            {
+                isHttpConnected = false;
+                HttpConnection?.Invoke(this, isHttpConnected);
+            }
+            return;
+        }
         
         // Test for Changes
         var stateChanged = CurrentState?.NavigationState != newState?.NavigationState;
@@ -140,7 +150,6 @@ public class GameDataService : IGameDataService
                             UdpConnection?.Invoke(this, isUdpConnected);
                         }
                         break;
-                                
                 }
             }
         }
@@ -192,6 +201,15 @@ public class GameDataService : IGameDataService
                     break;
             }
         }
+    }
+
+    public string getPlayerName()
+    {
+        if (string.IsNullOrWhiteSpace(HttpProfileInfo?.Name))
+        {
+            return "";
+        }
+        return HttpProfileInfo?.Name;
     }
 
     public void Stop()

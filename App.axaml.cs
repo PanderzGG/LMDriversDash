@@ -33,10 +33,14 @@ public partial class App : Application
         var collection = new ServiceCollection();
         collection.AddSingleton<MainViewModel>();
         collection.AddTransient<HomeViewModel>();
+        collection.AddTransient<SessionViewModel>();
+        collection.AddTransient<DriveViewModel>();
         
         collection.AddSingleton<Func<ApplicationPageNames, PageViewModel>>(x => name => name switch
         {
             ApplicationPageNames.Home => x.GetRequiredService<HomeViewModel>(),
+            ApplicationPageNames.Session => x.GetRequiredService<SessionViewModel>(),
+            ApplicationPageNames.Drive => x.GetRequiredService<DriveViewModel>(),
             _ => throw new ArgumentException("Unknown page", nameof(name))
         });
 

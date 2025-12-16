@@ -4,5 +4,5 @@ public enum ApplicationPageNames
 {
     Home,
     Session,
-    Settings
+    Drive
 }

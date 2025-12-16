@@ -18,12 +18,15 @@
     </Design.DataContext>
     
     <!-- Main Layoutgrid -->
-    <Grid Background="{DynamicResource PrimaryBackground}" ColumnDefinitions="Auto, *">
+    <Grid Background="{DynamicResource PrimaryBackground}"
+          ColumnDefinitions="Auto, *, Auto"
+          RowDefinitions="*, Auto">
         <!-- Main Content on the right side -->
         <ContentControl Grid.Column="1"
                         Padding="24"
                         Content="{Binding CurrentPage}"/>
         <Border Grid.Column="0"
+                Grid.RowSpan="2"
                 Padding="15"
                 Background="{DynamicResource PrimaryMenuBackground}"
                 BorderBrush="{DynamicResource BorderBrush}"
@@ -55,6 +58,66 @@
                             <TextBlock Text="Home" VerticalAlignment="Center"/>
                         </StackPanel>
                     </Button>
+                    <Button HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Left"
+                            Padding="12, 10"
+                            Classes.active="{Binding SessionPageIsActive}" 
+                            Classes="MenuButton" 
+                            Command="{Binding GoToSessionCommand}">
+                        <StackPanel Orientation="Horizontal"
+                                    Spacing="10">
+                            <TextBlock Text="S" VerticalAlignment="Center"/>
+                            <TextBlock Text="Session" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    <Button HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Left"
+                            Padding="12, 10"
+                            Classes.active="{Binding DrivePageIsactive}" 
+                            Classes="MenuButton" 
+                            Command="{Binding GoToDriveCommand}">
+                        <StackPanel Orientation="Horizontal"
+                                    Spacing="10">
+                            <TextBlock Text="D" VerticalAlignment="Center"/>
+                            <TextBlock Text="Drive" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+        
+        <Border Grid.Row="2"
+                Grid.Column="1"
+                HorizontalAlignment="Stretch"
+                Background="{DynamicResource InfoCardBackground}"
+                BorderBrush="{DynamicResource BorderBrush}">
+            <Grid RowDefinitions="Auto"
+                  ColumnDefinitions="Auto, Auto, *, Auto"
+                  ColumnSpacing="50">
+                <StackPanel Grid.Column="0"
+                            Orientation="Horizontal"
+                            Margin="10,5,10,5">
+                    <TextBlock Text="HttpClient Connection"
+                               Foreground="{DynamicResource PrimaryText}"
+                               Margin="0,0,10,0"/>
+                    <Ellipse Width="12" Height="12" Fill="{Binding HttpConnectionColor}"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" 
+                            Orientation="Horizontal"
+                            Margin="0,5,10,5">
+                    <TextBlock Text="UdpClient Connection"
+                               Foreground="{DynamicResource PrimaryText}"
+                               Margin="0,0,10,0"/>
+                    <Ellipse Width="12" Height="12" Fill="{Binding UdpConnectionColor}"/>
+                </StackPanel>
+                <StackPanel Grid.Column="3" HorizontalAlignment="Stretch"
+                            Orientation="Horizontal"
+                            Margin="0,5,10,5">
+                    <TextBlock Text="Http Game State:"
+                               Foreground="{DynamicResource PrimaryText}"/>
+                    <TextBlock Text="{Binding HttpGameState}"
+                               Foreground="{DynamicResource MenuActiveText}"
+                               Margin="5,0,10,0"/>
                 </StackPanel>
             </Grid>
         </Border>
