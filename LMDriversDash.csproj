@@ -27,5 +27,6 @@
 
     <ItemGroup>
       <Folder Include="Models\HttpModels\InSessionData\RepairandRefuel\" />
+      <Folder Include="Models\LMDDData\" />
     </ItemGroup>
 </Project>

@@ -32,43 +32,5 @@
                            Foreground="{DynamicResource PrimaryText}"/>
             </StackPanel>
         </Border>
-        
-        <Border Grid.Row="2"
-                Grid.Column="0"
-                Grid.ColumnSpan="4"
-                HorizontalAlignment="Stretch"
-                Background="{DynamicResource InfoCardBackground}"
-                BorderBrush="{DynamicResource BorderBrush}"
-                >
-            <Grid RowDefinitions="Auto"
-                  ColumnDefinitions="Auto, Auto, *, Auto"
-                  ColumnSpacing="50">
-                <StackPanel Grid.Column="0"
-                                Orientation="Horizontal"
-                                Margin="10,5,10,5">
-                    <TextBlock Text="HttpClient Connection"
-                                   Foreground="{DynamicResource PrimaryText}"
-                                   Margin="0,0,10,0"/>
-                    <Ellipse Width="12" Height="12" Fill="{Binding HttpConnectionColor}"/>
-                </StackPanel>
-                <StackPanel Grid.Column="1" 
-                            Orientation="Horizontal"
-                            Margin="0,5,10,5">
-                    <TextBlock Text="UdpClient Connection"
-                               Foreground="{DynamicResource PrimaryText}"
-                               Margin="0,0,10,0"/>
-                    <Ellipse Width="12" Height="12" Fill="{Binding UdpConnectionColor}"/>
-                </StackPanel>
-                <StackPanel Grid.Column="3" HorizontalAlignment="Stretch"
-                            Orientation="Horizontal"
-                            Margin="0,5,10,5">
-                    <TextBlock Text="Http Game State:"
-                               Foreground="{DynamicResource PrimaryText}"/>
-                    <TextBlock Text="{Binding HttpGameState}"
-                               Foreground="{DynamicResource MenuActiveText}"
-                               Margin="5,0,10,0"/>
-                </StackPanel>
-            </Grid>
-        </Border>
     </Grid>
 </UserControl>

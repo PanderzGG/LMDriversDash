@@ -5,9 +5,11 @@
       <map>
         <entry key="App.axaml" value="LMDriversDash.csproj" />
         <entry key="Styles/AppDefaultStyle.axaml" value="LMDriversDash.csproj" />
+        <entry key="Views/DriveView.axaml" value="LMDriversDash.csproj" />
         <entry key="Views/HomeView.axaml" value="LMDriversDash.csproj" />
         <entry key="Views/MainView.axaml" value="LMDriversDash.csproj" />
         <entry key="Views/MainWindow.axaml" value="LMDriversDash.csproj" />
+        <entry key="Views/SessionView.axaml" value="LMDriversDash.csproj" />
       </map>
     </option>
   </component>

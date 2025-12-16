@@ -20,10 +20,11 @@ public interface IGameDataService
     event EventHandler<ScoringDataReceivedEvent> UdpScoringDataReceived;
     
     // Needed Properties
-    LoadingStatus? LoadingStatus { get; set; }
-    State? CurrentState { get; set; }
-    HttpProfileInfo? HttpProfileInfo { get; set; }
+    LoadingStatus? LoadingStatus { get; }
+    State? CurrentState { get; }
+    HttpProfileInfo? HttpProfileInfo { get; }
 
     Task RunOnStartupAsync();
     void Stop();
+    public string getPlayerName();
 }
