@@ -26,6 +26,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Assets\Fonts\" />
       <Folder Include="Models\HttpModels\InSessionData\RepairandRefuel\" />
       <Folder Include="Models\LMDDData\" />
     </ItemGroup>

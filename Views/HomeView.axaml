@@ -13,24 +13,90 @@
     </Design.DataContext>
     
     <Grid Background="{DynamicResource PrimaryBackground}"
-          RowDefinitions="Auto, *, Auto"
-          ColumnDefinitions="*, *, *, *">
+          RowDefinitions="Auto, Auto">
         <Border Grid.Row="0"
-                Grid.Column="0"
-                Grid.ColumnSpan="4"
                 HorizontalAlignment="Stretch"
                 Background="{DynamicResource InfoCardBackground}"
                 BorderBrush="{DynamicResource BorderBrush}">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Welcome back "
-                           FontSize="28"
-                           FontWeight="Bold"
-                           Foreground="{DynamicResource MenuActiveText}"/>
-                <TextBlock Text="{Binding PlayerName}"
-                           FontSize="28"
-                           FontWeight="Bold"
-                           Foreground="{DynamicResource PrimaryText}"/>
+            <StackPanel Orientation="Vertical"
+                        Margin="25,0,0,0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Welcome back "
+                               FontSize="28"
+                               FontWeight="Bold"
+                               FontFamily="{DynamicResource FunnelBold}"
+                               Foreground="{DynamicResource MenuActiveText}"/>
+                    <TextBlock Text="{Binding PlayerName}"
+                               FontSize="28"
+                               FontFamily="{DynamicResource FunnelBold}"
+                               Foreground="{DynamicResource PrimaryText}"/>
+                </StackPanel>
+                <TextBlock Text="The checkered Flag is waiting"
+                           Foreground="{DynamicResource SmallTextColor}"
+                           FontFamily="{DynamicResource FunnelMedium}"/>
             </StackPanel>
         </Border>
+        
+        <Grid Grid.Row="1"
+              ColumnDefinitions="*,*,*,*"
+              RowDefinitions="Auto,*,*"
+              Margin="25,25,0,0">
+            <Border Grid.Row="1"
+                    Grid.Column="0"
+                    Background="{DynamicResource InfoCardBackground}"
+                    BorderThickness="1"
+                    BorderBrush="{DynamicResource BorderBrush}"
+                    CornerRadius="15"
+                    Height="150">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal"
+                                Margin="25,25,0,0">
+                        <Border Background="{DynamicResource MenuActiveBackgroundSemiTransparent}"
+                                CornerRadius="6">
+                            <TextBlock Foreground="{DynamicResource PrimaryText}"
+                                       FontFamily="{DynamicResource Phosphor}"
+                                       FontSize="25"
+                                       Text="&#xEA38;"
+                                       Padding="10"/>    
+                        </Border>
+                        <Border Background="{DynamicResource InfoCardBackgroundSecondaryColorPositive}"
+                                BorderThickness="1"
+                                VerticalAlignment="Center"
+                                CornerRadius="25"
+                                Margin="100,0,0,0"
+                                Padding="5,0,5,0">
+                            <StackPanel>
+                                <TextBlock Text="+12%"
+                                           FontFamily="{DynamicResource FunnelMedium}"
+                                           Foreground="{DynamicResource InfoCardSecondaryTextPositive}"/>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical"
+                                Margin="25,10,0,0">
+                        <TextBlock Text="247"
+                                   FontFamily="{DynamicResource FunnelBold}"
+                                   Foreground="{DynamicResource PrimaryText}"
+                                   FontSize="25"/>
+                        <TextBlock Text="Total LMDD Races"
+                                   FontFamily="{DynamicResource FunnelMedium}"
+                                   Foreground="{DynamicResource SmallTextColor}"
+                                   FontSize="10"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            <Border Grid.Row="1"
+                    Grid.Column="1">
+                
+            </Border>
+            <Border Grid.Row="1"
+                    Grid.Column="2">
+                
+            </Border>
+            <Border Grid.Row="1"
+                    Grid.Column="3">
+                
+            </Border>
+        </Grid>
     </Grid>
 </UserControl>

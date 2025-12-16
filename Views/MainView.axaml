@@ -23,7 +23,6 @@
           RowDefinitions="*, Auto">
         <!-- Main Content on the right side -->
         <ContentControl Grid.Column="1"
-                        Padding="24"
                         Content="{Binding CurrentPage}"/>
         <Border Grid.Column="0"
                 Grid.RowSpan="2"
