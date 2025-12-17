@@ -1,10 +1,15 @@
 ﻿<Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Design.PreviewWith>
-        <Border Padding="20" Background="{DynamicResource PrimaryMenuBackground}">
-            <!-- Add Controls for Previewer Here -->
+        <StackPanel Background="{DynamicResource PrimaryBackground}" HorizontalAlignment="Left">
+            <Label Foreground="White">Menu Button</Label>
             <Button Foreground="{DynamicResource PrimaryText}" Classes="MenuButton">Home</Button>
-        </Border>
+            <Label Foreground="White">HomeView small card</Label>
+            <Border Classes="HomeCard"></Border>
+            <Label Foreground="White">HomeView Datagrid Card</Label>
+            <Border Classes="HomeGridCard"></Border>
+        </StackPanel>
+        
     </Design.PreviewWith>
 
     <!-- Add Styles Here -->
@@ -35,5 +40,36 @@
     <Style Selector="Button.active:pointerover /template/ ContentPresenter">
         <Setter Property="Background" Value="{DynamicResource MenuActiveBackgroundSemiTransparent}"></Setter>
         <Setter Property="Foreground" Value="{DynamicResource MenuActiveText}"></Setter>
+    </Style>
+    
+    <!-- HomeCard Styles -->
+    <Style Selector="Border.HomeCard">
+        <Setter Property="Background" Value="{DynamicResource InfoCardBackground}"></Setter>
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"></Setter>
+        <Setter Property="BorderThickness" Value="1"></Setter>
+        <Setter Property="CornerRadius" Value="15"></Setter>
+        <Setter Property="MaxHeight" Value="150"></Setter>
+        <Setter Property="MinHeight" Value="150"></Setter>
+        <Setter Property="MinWidth" Value="220"></Setter>
+        <Setter Property="MaxWidth" Value="220"></Setter>
+    </Style>
+    <Style Selector="Border.HomeGridCard">
+        <Setter Property="Background" Value="{DynamicResource InfoCardBackground}"></Setter>
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"></Setter>
+        <Setter Property="BorderThickness" Value="1"></Setter>
+        <Setter Property="CornerRadius" Value="15"></Setter>
+        <Setter Property="MinHeight" Value="400"></Setter>
+        <Setter Property="MinWidth" Value="500"></Setter>
+    </Style>
+    <!--Primary Homecard Text -->
+    <Style Selector="TextBlock.SmallHomeCardPrimaryText">
+        <Setter Property="FontFamily" Value="{DynamicResource FunnelBold}"></Setter>
+        <Setter Property="FontSize" Value="25"></Setter>
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryText}"></Setter>
+    </Style>
+    <Style Selector="TextBlock.SmallHomeCardSmallText">
+        <Setter Property="FontFamily" Value="{DynamicResource FunnelMedium}"></Setter>
+        <Setter Property="FontSize" Value="10"></Setter>
+        <Setter Property="Foreground" Value="{DynamicResource SmallTextColor}"></Setter>
     </Style>
 </Styles>
