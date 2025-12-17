@@ -16,15 +16,35 @@
     </Application.Styles>
              
     <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="/Styles/Resources/MultiColorBoxShadow.axaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+        
         <SolidColorBrush x:Key="PrimaryBackground">#121212</SolidColorBrush>
         <SolidColorBrush x:Key="PrimaryText">#CFCFCF</SolidColorBrush>
         <SolidColorBrush x:Key="PrimaryMenuBackground">#282828</SolidColorBrush>
         <SolidColorBrush x:Key="MenuHoverBackground">#717171</SolidColorBrush>
         <SolidColorBrush x:Key="MenuActiveText">#78ef3f</SolidColorBrush>
         <SolidColorBrush x:Key="InfoCardBackground">#282828</SolidColorBrush>
-        <SolidColorBrush x:Key="InfoCardSecondaryTextPositive">#00c4de</SolidColorBrush>
-        <SolidColorBrush x:Key="InfoCardBackgroundSecondaryColorPositive">#5000c4de</SolidColorBrush>
-        <SolidColorBrush x:Key="InfoCardBorderSecondaryColorPositive">#8000c4de</SolidColorBrush>
+        <SolidColorBrush x:Key="InfoCardSecondaryTextPositive">#47d5a6</SolidColorBrush>
+        <SolidColorBrush x:Key="InfoCardBackgroundSecondaryColorPositive">#5047d5a6</SolidColorBrush>
+        <SolidColorBrush x:Key="InfoCardBorderSecondaryColorPositive">#8047d5a6</SolidColorBrush>
+        
+        <SolidColorBrush x:Key="LMDDWINS">#47d5a6</SolidColorBrush>
+        
+        
+        <SolidColorBrush x:Key="RacesGreen">#78ef3f</SolidColorBrush>
+        <SolidColorBrush x:Key="RacesGreenbg">#3078ef3f</SolidColorBrush>
+        <SolidColorBrush x:Key="TrophyTurk">#47d5a6</SolidColorBrush>
+        <SolidColorBrush x:Key="TrophyTurkbg">#3047d5a6</SolidColorBrush>
+        <SolidColorBrush x:Key="PercentBlue">#3f76cf</SolidColorBrush>
+        <SolidColorBrush x:Key="PercentBluebg">#303f76cf</SolidColorBrush>
+        <SolidColorBrush x:Key="MedalBronze">#d7ac61</SolidColorBrush>
+        <SolidColorBrush x:Key="MedalBronzebg">#30d7ac61</SolidColorBrush>
+
+        
         
         <SolidColorBrush x:Key="BorderBrush">#3f3f3f</SolidColorBrush>
         <SolidColorBrush x:Key="SmallTextColor">#717171</SolidColorBrush>

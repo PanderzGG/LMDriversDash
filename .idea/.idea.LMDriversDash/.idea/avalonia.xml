@@ -5,6 +5,7 @@
       <map>
         <entry key="App.axaml" value="LMDriversDash.csproj" />
         <entry key="Styles/AppDefaultStyle.axaml" value="LMDriversDash.csproj" />
+        <entry key="Styles/Resources/MultiColorBoxShadow.axaml" value="LMDriversDash.csproj" />
         <entry key="Views/DriveView.axaml" value="LMDriversDash.csproj" />
         <entry key="Views/HomeView.axaml" value="LMDriversDash.csproj" />
         <entry key="Views/MainView.axaml" value="LMDriversDash.csproj" />

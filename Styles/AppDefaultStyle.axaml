@@ -52,6 +52,7 @@
         <Setter Property="MinHeight" Value="150"></Setter>
         <Setter Property="MinWidth" Value="220"></Setter>
         <Setter Property="MaxWidth" Value="220"></Setter>
+        
     </Style>
     <Style Selector="Border.HomeGridCard">
         <Setter Property="Background" Value="{DynamicResource InfoCardBackground}"></Setter>
@@ -78,4 +79,6 @@
         <Setter Property="FontSize" Value="10"></Setter>
         <Setter Property="Foreground" Value="{DynamicResource SmallTextColor}"></Setter>
     </Style>
+    
+    
 </Styles>

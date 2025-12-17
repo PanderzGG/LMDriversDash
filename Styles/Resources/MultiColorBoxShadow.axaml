@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Color x:Key="ShadowGreen">#78ef3f</Color>
+    <Color x:Key="ShadowTurk">#47d5a6</Color>
+    <Color x:Key="ShadowBlue">#3f76cf</Color>
+    <Color x:Key="ShadowBronze">#d7ac61</Color>
+
+    <BoxShadows x:Key="ShadowGreenBox">-5 5 20 0 #8078ef3f</BoxShadows>
+    <BoxShadows x:Key="ShadowTurkBox">-5 5 20 0 #8047d5a6</BoxShadows>
+    <BoxShadows x:Key="ShadowBlueBox">-5 5 20 0 #803f76cf</BoxShadows>
+    <BoxShadows x:Key="ShadowBronzeBox">-5 5 20 0 #80d7ac61</BoxShadows>
+</ResourceDictionary>
