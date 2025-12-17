@@ -2,9 +2,13 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using CommunityToolkit.Mvvm.ComponentModel;
+using LiveChartsCore;
+using LiveChartsCore.SkiaSharpView;
+using LiveChartsCore.SkiaSharpView.Painting;
 using LMDriversDash.Services.Events;
 using LMDriversDash.Services.Interfaces.IGameState;
 using LMDriversDash.UsefulData;
+using SkiaSharp;
 
 namespace LMDriversDash.ViewModels;
 
@@ -34,6 +38,24 @@ public partial class HomeViewModel : PageViewModel
         _gameDataService.HttpProfileInfoReceived += OnPlayerProfileReceived;
 
         getPlayerName();
+        
+        
+        // temporary Testdata for runtime
+
+        #region TemporaryTest
+            
+        var test = new List<HomeGridTestData>
+        {
+            new HomeGridTestData("01.01.2026", "Circuit de la Sarthe in France", "2:00", "1", "Won", "x, x"),
+            new HomeGridTestData("01.01.2026", "Circuit de la Sarthe in France", "2:01", "2", "Podium", "x, x"),
+            new HomeGridTestData("01.01.2026", "Circuit de la Sarthe in France", "2:02", "3", "Podium", "x, x"),
+            new HomeGridTestData("01.01.2026", "Circuit de la Sarthe in France", "2:03", "4", "Top 5", "x, x"),
+            new HomeGridTestData("01.01.2026", "Circuit de la Sarthe in France", "2:04", "5", "Top 5", "x, x")
+        };
+        gridtest = new ObservableCollection<HomeGridTestData>(test);
+
+        #endregion
+        
     }
 
     private void getPlayerName()
@@ -52,19 +74,78 @@ public partial class HomeViewModel : PageViewModel
         }
     }
     
+    
+    // Design VM
     public HomeViewModel()
     {
         PageName = ApplicationPageNames.Home;
+
+        // DataGrid Test Data
         var test = new List<HomeGridTestData>
         {
-            new HomeGridTestData("01.01.2026","Spa","2:00","1","Won","x, x"),
-            new HomeGridTestData("01.01.2026","Spa","2:01","2","Podium","x, x"),
-            new HomeGridTestData("01.01.2026","Spa","2:02","3","Podium","x, x"),
-            new HomeGridTestData("01.01.2026","Spa","2:03","4","Top 5","x, x"),
-            new HomeGridTestData("01.01.2026","Spa","2:04","5","Top 5","x, x")
+            new HomeGridTestData("01.01.2026", "Circuit de la Sarthe in France", "2:00", "1", "Won", "x, x"),
+            new HomeGridTestData("01.01.2026", "Circuit de la Sarthe in France", "2:01", "2", "Podium", "x, x"),
+            new HomeGridTestData("01.01.2026", "Circuit de la Sarthe in France", "2:02", "3", "Podium", "x, x"),
+            new HomeGridTestData("01.01.2026", "Circuit de la Sarthe in France", "2:03", "4", "Top 5", "x, x"),
+            new HomeGridTestData("01.01.2026", "Circuit de la Sarthe in France", "2:04", "5", "Top 5", "x, x")
         };
         gridtest = new ObservableCollection<HomeGridTestData>(test);
     }
+    
+    // Pie Chart Test Data
+    public ISeries[] Series { get; set; } = new ISeries[]
+    {
+        new PieSeries<int>
+        {
+            Values = new int[] {50},
+            Name = "Monza",
+            Fill = new SolidColorPaint(SKColor.Parse("#78ef3f")),
+            Stroke = null,
+            ShowDataLabels = true,
+            DataLabelsPaint = new SolidColorPaint(SKColors.Black),
+            DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Outer,
+            DataLabelsFormatter = point => point.Context.Series.Name,
+            InnerRadius = 40,
+            MaxRadialColumnWidth = 10,
+            
+        },
+        new PieSeries<int>
+        {
+            Values = new int[] {48},
+            Name = "Spa",
+            Fill = new SolidColorPaint(SKColor.Parse("#78ef3f")),
+            Stroke = null,
+            ShowDataLabels = true,
+            DataLabelsPaint = new SolidColorPaint(SKColors.Black),
+            DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Middle,
+            DataLabelsFormatter = point => point.Context.Series.Name,
+            InnerRadius = 40
+        },
+        new PieSeries<int>
+        {
+            Values = new int[] {25},
+            Name = "Circuit de la Sarthe in France",
+            Stroke = null,
+            Fill = new SolidColorPaint(SKColor.Parse("#78ef3f")),
+            ShowDataLabels = true,
+            DataLabelsPaint = new SolidColorPaint(SKColors.Black),
+            DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Middle,
+            DataLabelsFormatter = point => point.Context.Series.Name,
+            InnerRadius = 40
+        },
+        new PieSeries<int>
+        {
+            Values = new int[] {100},
+            Name = "Rainbowroad",
+            Stroke = null,
+            Fill = new SolidColorPaint(SKColor.Parse("#78ef3f")),
+            ShowDataLabels = true,
+            DataLabelsPaint = new SolidColorPaint(SKColors.Black),
+            DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Middle,
+            DataLabelsFormatter = point => point.Context.Series.Name,
+            InnerRadius = 40
+        },
+    };
 }
 
 public class HomeGridTestData

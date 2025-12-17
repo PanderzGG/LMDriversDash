@@ -61,6 +61,12 @@
         <Setter Property="MinHeight" Value="400"></Setter>
         <Setter Property="MinWidth" Value="500"></Setter>
     </Style>
+    <Style Selector="Border.HomePieCard">
+        <Setter Property="Background" Value="{DynamicResource InfoCardBackground}"></Setter>
+        <Setter Property="BorderBrush" Value="{DynamicResource BorderBrush}"></Setter>
+        <Setter Property="BorderThickness" Value="1"></Setter>
+        <Setter Property="CornerRadius" Value="15"></Setter>
+    </Style>
     <!--Primary Homecard Text -->
     <Style Selector="TextBlock.SmallHomeCardPrimaryText">
         <Setter Property="FontFamily" Value="{DynamicResource FunnelBold}"></Setter>
