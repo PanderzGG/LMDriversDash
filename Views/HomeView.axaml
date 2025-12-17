@@ -8,7 +8,12 @@
              x:DataType="vm:HomeViewModel"
              x:Class="LMDriversDash.Views.HomeView"
              MinWidth="1200"
-             HorizontalAlignment="Stretch">
+             MaxHeight="826"
+             Padding="0"
+             Margin="0"
+             BorderThickness="0"
+             HorizontalAlignment="Stretch"
+             VerticalAlignment="Stretch">
     <Design.DataContext>
         <vm:HomeViewModel/>
     </Design.DataContext>
@@ -16,7 +21,7 @@
     <Grid Background="{DynamicResource PrimaryBackground}"
           RowDefinitions="Auto, *"
           ColumnDefinitions="Auto, *, *"
-          Margin="0,0,0,25">
+          VerticalAlignment="Stretch">
         <Border Grid.Row="0"
                 Grid.Column="0"
                 Grid.ColumnSpan="3"
@@ -45,71 +50,75 @@
         <Grid Grid.Row="1"
               Grid.Column="0"
               Grid.ColumnSpan="3"
-              ColumnDefinitions="Auto, Auto"
-              RowDefinitions="Auto, Auto"
-              Margin="25,25,25,0"
+              ColumnDefinitions="*, Auto"
+              RowDefinitions="Auto, *"
+              Margin="25,15,25,15"
               ColumnSpacing="25"
-              HorizontalAlignment="Stretch">
+              HorizontalAlignment="Stretch"
+              VerticalAlignment="Top"
+              MaxHeight="600">
             <!-- Upper Row -->
             <Border Grid.Row="0"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
-                    HorizontalAlignment="Stretch">
+                    HorizontalAlignment="Left">
                 <UniformGrid 
                          Rows="1"
                          Columns="4"
+                         ColumnSpacing="90"
                          >
-                    <Border Classes="HomeCard">
+                    <Border Classes="HomeCard" BoxShadow="-5 5 0 0 Gray">
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal"
+                                        Margin="20,20,0,0"
+                                        Spacing="70">
+                                <Border Background="{DynamicResource RacesGreenbg}"
+                                        CornerRadius="6">
+                                    <TextBlock Foreground="{DynamicResource RacesGreen}"
+                                               FontFamily="{DynamicResource Phosphor}"
+                                               FontSize="25"
+                                               Text="&#xEA38;"
+                                               Padding="8"/>    
+                                </Border>
+                                <Border Background="{DynamicResource InfoCardBackgroundSecondaryColorPositive}"
+                                        BorderThickness="1"
+                                        VerticalAlignment="Center"
+                                        CornerRadius="25"
+                                        Margin="0,0,20,0"
+                                        Padding="5,0,5,0">
+                                    <StackPanel>
+                                        <TextBlock Text="+12%"
+                                                   FontFamily="{DynamicResource FunnelMedium}"
+                                                   Foreground="{DynamicResource InfoCardSecondaryTextPositive}"/>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical"
+                                        Margin="20,8,0,15">
+                                <TextBlock Text="247"
+                                           Classes="SmallHomeCardPrimaryText"/>
+                                <TextBlock Text="Total LMDD Races"
+                                           Classes="SmallHomeCardSmallText"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                    <Border Classes="HomeCard" BoxShadow="-5 5 0 0 Gray">
                     <StackPanel Orientation="Vertical">
                         <StackPanel Orientation="Horizontal"
-                                    Margin="25,25,0,0">
-                            <Border Background="{DynamicResource MenuActiveBackgroundSemiTransparent}"
-                                    CornerRadius="6">
-                                <TextBlock Foreground="{DynamicResource PrimaryText}"
-                                           FontFamily="{DynamicResource Phosphor}"
-                                           FontSize="25"
-                                           Text="&#xEA38;"
-                                           Padding="10"/>    
-                            </Border>
+                                    Margin="20,20,0,0"
+                                    Spacing="70">
                             <Border Background="{DynamicResource InfoCardBackgroundSecondaryColorPositive}"
-                                    BorderThickness="1"
-                                    VerticalAlignment="Center"
-                                    CornerRadius="25"
-                                    Margin="75,0,25,0"
-                                    Padding="5,0,5,0">
-                                <StackPanel>
-                                    <TextBlock Text="+12%"
-                                               FontFamily="{DynamicResource FunnelMedium}"
-                                               Foreground="{DynamicResource InfoCardSecondaryTextPositive}"/>
-                                </StackPanel>
-                            </Border>
-                        </StackPanel>
-                        <StackPanel Orientation="Vertical"
-                                    Margin="25,10,0,0">
-                            <TextBlock Text="247"
-                                       Classes="SmallHomeCardPrimaryText"/>
-                            <TextBlock Text="Total Recorded LMDD Races"
-                                       Classes="SmallHomeCardSmallText"/>
-                        </StackPanel>
-                    </StackPanel>
-                </Border>
-                <Border Classes="HomeCard">
-                    <StackPanel Orientation="Vertical">
-                        <StackPanel Orientation="Horizontal"
-                                    Margin="25,25,0,0">
-                            <Border Background="{DynamicResource MenuActiveBackgroundSemiTransparent}"
                                     CornerRadius="6">
-                                <TextBlock Foreground="{DynamicResource PrimaryText}"
+                                <TextBlock Foreground="{DynamicResource TrophyTurk}"
                                            FontFamily="{DynamicResource Phosphor}"
                                            FontSize="25"
                                            Text="&#xE67E;"
-                                           Padding="10"/>    
+                                           Padding="8"/>    
                             </Border>
                             <Border Background="{DynamicResource InfoCardBackgroundSecondaryColorPositive}"
                                     BorderThickness="1"
                                     VerticalAlignment="Center"
                                     CornerRadius="25"
-                                    Margin="75,0,25,0"
                                     Padding="5,0,5,0">
                                 <StackPanel>
                                     <TextBlock Text="+6%"
@@ -119,7 +128,7 @@
                             </Border>
                         </StackPanel>
                         <StackPanel Orientation="Vertical"
-                                    Margin="25,10,0,0">
+                                    Margin="20,8,0,15">
                             <TextBlock Text="89"
                                        Classes="SmallHomeCardPrimaryText"/>
                             <TextBlock Text="Total LMDD Wins"
@@ -127,23 +136,23 @@
                         </StackPanel>
                     </StackPanel>
                 </Border>
-                <Border Classes="HomeCard">
+                    <Border Classes="HomeCard" BoxShadow="-5 5 0 0 Gray">
                     <StackPanel Orientation="Vertical">
                         <StackPanel Orientation="Horizontal"
-                                    Margin="25,25,0,0">
-                            <Border Background="{DynamicResource MenuActiveBackgroundSemiTransparent}"
+                                    Margin="20,20,0,0"
+                                    Spacing="70">
+                            <Border Background="{DynamicResource PercentBluebg}"
                                     CornerRadius="6">
-                                <TextBlock Foreground="{DynamicResource PrimaryText}"
+                                <TextBlock Foreground="{DynamicResource PercentBlue}"
                                            FontFamily="{DynamicResource Phosphor}"
                                            FontSize="25"
                                            Text="&#xE3B6;"
-                                           Padding="10"/>    
+                                           Padding="8"/>    
                             </Border>
                             <Border Background="{DynamicResource InfoCardBackgroundSecondaryColorPositive}"
                                     BorderThickness="1"
                                     VerticalAlignment="Center"
                                     CornerRadius="25"
-                                    Margin="75,0,25,0"
                                     Padding="5,0,5,0">
                                 <StackPanel>
                                     <TextBlock Text="+6%"
@@ -153,7 +162,7 @@
                             </Border>
                         </StackPanel>
                         <StackPanel Orientation="Vertical"
-                                    Margin="25,10,0,0">
+                                    Margin="20,8,0,15">
                             <TextBlock Text="36%"
                                        Classes="SmallHomeCardPrimaryText"/>
                             <TextBlock Text="LMDD Win Rate"
@@ -161,23 +170,23 @@
                         </StackPanel>
                     </StackPanel>
             </Border>
-                <Border Classes="HomeCard">
+                    <Border Classes="HomeCard" BoxShadow="-5 5 0 0 Gray">
                     <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal"
-                                        Margin="25,25,0,0">
-                                <Border Background="{DynamicResource MenuActiveBackgroundSemiTransparent}"
+                                        Margin="20,20,0,0"
+                                        Spacing="70">
+                                <Border Background="{DynamicResource MedalBronzebg}"
                                         CornerRadius="6">
-                                    <TextBlock Foreground="{DynamicResource PrimaryText}"
+                                    <TextBlock Foreground="{DynamicResource MedalBronze}"
                                                FontFamily="{DynamicResource Phosphor}"
                                                FontSize="25"
                                                Text="&#xE320;"
-                                               Padding="10"/>    
+                                               Padding="8"/>    
                                 </Border>
                                 <Border Background="{DynamicResource InfoCardBackgroundSecondaryColorPositive}"
                                         BorderThickness="1"
                                         VerticalAlignment="Center"
                                         CornerRadius="25"
-                                        Margin="75,0,25,0"
                                         Padding="5,0,5,0">
                                     <StackPanel>
                                         <TextBlock Text="same"
@@ -187,7 +196,7 @@
                                 </Border>
                             </StackPanel>
                             <StackPanel Orientation="Vertical"
-                                        Margin="25,10,0,0">
+                                        Margin="20,8,0,15">
                                 <TextBlock Text="43"
                                            Classes="SmallHomeCardPrimaryText"/>
                                 <TextBlock Text="LMDD Podium Finishes"
@@ -195,26 +204,33 @@
                             </StackPanel>
                     </StackPanel>
                 </Border>
-            </UniformGrid>
+                </UniformGrid>
             </Border>
             <!-- Lower Row -->
             <Border Grid.Row="1"
                     Grid.Column="0"
-                    Margin="0,25,0,0"
+                    Margin="0,15,0,0"
                     Classes="HomeGridCard"
+                    Height="555"
+                    VerticalAlignment="Top"
+                    BoxShadow="-5 5 0 0 Gray"
                     >
-                <StackPanel Margin="15">
-                    <TextBlock Text="Recent LMDD Sessions"
+                <Grid Margin="15"
+                      RowDefinitions="Auto, Auto, *">
+                    <TextBlock Grid.Row="0"
+                               Text="Recent LMDD Sessions"
                                Classes="SmallHomeCardPrimaryText"/>
-                    <TextBlock Text="Shows you all your recent activity while running LMDD"
+                    <TextBlock Grid.Row="1"
+                               Text="Shows you all your recent activity while running LMDD"
                                Classes="SmallHomeCardSmallText"/>
-                    <Border ClipToBounds="True"
+                    <Border Grid.Row="2"
+                            ClipToBounds="True"
                             CornerRadius="15"
-                            BorderThickness="2"
-                            BorderBrush="{DynamicResource BorderBrush}"
+                            BorderThickness="0"
+                            Background="{DynamicResource InfoCardBackground}"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
-                            Padding="5">
+                            Margin="0,10,0,0">
                         <DataGrid AutoGenerateColumns="False"
                               ItemsSource="{Binding gridtest}"
                               IsReadOnly="True"
@@ -223,7 +239,11 @@
                               GridLinesVisibility="Horizontal"
                               HorizontalGridLinesBrush="{DynamicResource BorderBrush}"
                               Foreground="White"
-                              Background="{DynamicResource InfoCardBackground}"
+                              Background="Transparent"
+                              HorizontalAlignment="Stretch"
+                              VerticalAlignment="Top"
+                              HorizontalScrollBarVisibility="Disabled"
+                              VerticalScrollBarVisibility="Disabled"
                               >
                             <DataGrid.Styles>
                                 <Style Selector="DataGridColumnHeader">
@@ -234,35 +254,70 @@
                                 </Style>
                             </DataGrid.Styles>
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Date" Binding="{Binding Date}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Track" Binding="{Binding Track}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Best Lap" Binding="{Binding BestLap}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Position" Binding="{Binding Position}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Status" Binding="{Binding Status}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Actions" Binding="{Binding Actions}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Date" Binding="{Binding Date}" FontFamily="{DynamicResource FunnelMedium}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Track" Binding="{Binding Track}" FontFamily="{DynamicResource FunnelMedium}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Best Lap" Binding="{Binding BestLap}" FontFamily="{DynamicResource FunnelMedium}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Position" Binding="{Binding Position}" FontFamily="{DynamicResource FunnelMedium}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Status" Binding="{Binding Status}" FontFamily="{DynamicResource FunnelMedium}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Actions" Binding="{Binding Actions}" FontFamily="{DynamicResource Phosphor}" Width="*" Foreground="{DynamicResource MenuActiveText}"></DataGridTextColumn>
                             </DataGrid.Columns>
                         </DataGrid>    
                     </Border>
-                </StackPanel>
+                </Grid>
             </Border>
-            <Border Grid.Row="1"
-                    Grid.Column="3"
-                    Classes="HomePieCard"
-                    Height="400"
-                    Width="400"
-                    Margin="0,25,0,0"
-                    ClipToBounds="True"
-                    Padding="5"
-                    >
+            <Grid Grid.Row="1"
+                  Grid.Column="1"
+                  Margin="0,15,0,0"
+                  RowDefinitions="Auto, Auto"
+                  RowSpacing="15"
+                  MaxHeight="560">
                 
-                   <lvc:PieChart Series="{Binding Series}"
-                                 MinHeight="300"
-                                 MinWidth="300"
-                                 Background="{DynamicResource InfoCardBackground}"
-                                 VerticalAlignment="Stretch"
-                                 HorizontalAlignment="Stretch"
-                                 />
-            </Border>
+                <!-- Tracks Pie Chart -->
+                <Border Grid.Row="0"
+                        Classes="HomePieCard"
+                        Height="270"
+                        Width="380"
+                        ClipToBounds="False"
+                        Padding="8"
+                        BoxShadow="-5 5 0 0 Gray">
+                    <StackPanel>
+                        <TextBlock Text="Most Driven Tracks"
+                                   Classes="SmallHomeCardPrimaryText"
+                                   HorizontalAlignment="Stretch"
+                                   Margin="0,0,0,5"/>
+                        <lvc:PieChart Series="{Binding TrackSeries}"
+                                      Height="200"
+                                      Width="220"
+                                      Background="{DynamicResource InfoCardBackground}"
+                                      VerticalAlignment="Center"
+                                      HorizontalAlignment="Center"
+                                      />
+                    </StackPanel>
+                </Border>
+                
+                <!-- Vehicles Pie Chart -->
+                <Border Grid.Row="1"
+                        Classes="HomePieCard"
+                        Height="270"
+                        Width="380"
+                        ClipToBounds="False"
+                        Padding="8"
+                        BoxShadow="-5 5 0 0 Gray">
+                    <StackPanel>
+                        <TextBlock Text="Most Used Vehicles"
+                                   Classes="SmallHomeCardPrimaryText"
+                                   HorizontalAlignment="Stretch"
+                                   Margin="0,0,0,5"/>
+                        <lvc:PieChart Series="{Binding VehicleSeries}"
+                                      Height="200"
+                                      Width="220"
+                                      Background="{DynamicResource InfoCardBackground}"
+                                      VerticalAlignment="Center"
+                                      HorizontalAlignment="Center"
+                                      />
+                    </StackPanel>
+                </Border>
+            </Grid>
         </Grid>
     </Grid>
 </UserControl>

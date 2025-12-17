@@ -46,11 +46,11 @@ public partial class HomeViewModel : PageViewModel
             
         var test = new List<HomeGridTestData>
         {
-            new HomeGridTestData("01.01.2026", "Circuit de la Sarthe in France", "2:00", "1", "Won", "x, x"),
-            new HomeGridTestData("01.01.2026", "Circuit de la Sarthe in France", "2:01", "2", "Podium", "x, x"),
-            new HomeGridTestData("01.01.2026", "Circuit de la Sarthe in France", "2:02", "3", "Podium", "x, x"),
-            new HomeGridTestData("01.01.2026", "Circuit de la Sarthe in France", "2:03", "4", "Top 5", "x, x"),
-            new HomeGridTestData("01.01.2026", "Circuit de la Sarthe in France", "2:04", "5", "Top 5", "x, x")
+            new HomeGridTestData("01.01.2026", "Circuit de la Sarthe in France", "2:00", "1", "Won", "\uE220  |   \uE20C"),
+            new HomeGridTestData("01.01.2026", "Circuit de la Sarthe in France", "2:01", "2", "Podium", "\uE220  |   \uE20C"),
+            new HomeGridTestData("01.01.2026", "Circuit de la Sarthe in France", "2:02", "3", "Podium", "\uE220  |   \uE20C"),
+            new HomeGridTestData("01.01.2026", "Circuit de la Sarthe in France", "2:03", "4", "Top 5", "\uE220  |   \uE20C"),
+            new HomeGridTestData("01.01.2026", "Circuit de la Sarthe in France", "2:04", "5", "Top 5", "\uE220  |   \uE20C")
         };
         gridtest = new ObservableCollection<HomeGridTestData>(test);
 
@@ -83,17 +83,17 @@ public partial class HomeViewModel : PageViewModel
         // DataGrid Test Data
         var test = new List<HomeGridTestData>
         {
-            new HomeGridTestData("01.01.2026", "Circuit de la Sarthe in France", "2:00", "1", "Won", "x, x"),
-            new HomeGridTestData("01.01.2026", "Circuit de la Sarthe in France", "2:01", "2", "Podium", "x, x"),
-            new HomeGridTestData("01.01.2026", "Circuit de la Sarthe in France", "2:02", "3", "Podium", "x, x"),
-            new HomeGridTestData("01.01.2026", "Circuit de la Sarthe in France", "2:03", "4", "Top 5", "x, x"),
-            new HomeGridTestData("01.01.2026", "Circuit de la Sarthe in France", "2:04", "5", "Top 5", "x, x")
+            new HomeGridTestData("01.01.2026", "Circuit de la Sarthe in France", "2:00", "1", "Won", "\uE220  |   \uE20C"),
+            new HomeGridTestData("01.01.2026", "Circuit de la Sarthe in France", "2:01", "2", "Podium", "\uE220  |   \uE20C"),
+            new HomeGridTestData("01.01.2026", "Circuit de la Sarthe in France", "2:02", "3", "Podium", "\uE220  |   \uE20C"),
+            new HomeGridTestData("01.01.2026", "Circuit de la Sarthe in France", "2:03", "4", "Top 5", "\uE220  |   \uE20C"),
+            new HomeGridTestData("01.01.2026", "Circuit de la Sarthe in France", "2:04", "5", "Top 5", "\uE220  |   \uE20C")
         };
         gridtest = new ObservableCollection<HomeGridTestData>(test);
     }
     
-    // Pie Chart Test Data
-    public ISeries[] Series { get; set; } = new ISeries[]
+    // Pie Chart Test Data - Tracks
+    public ISeries[] TrackSeries { get; set; } = new ISeries[]
     {
         new PieSeries<int>
         {
@@ -102,48 +102,107 @@ public partial class HomeViewModel : PageViewModel
             Fill = new SolidColorPaint(SKColor.Parse("#78ef3f")),
             Stroke = null,
             ShowDataLabels = true,
-            DataLabelsPaint = new SolidColorPaint(SKColors.Black),
-            DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Outer,
+            DataLabelsPaint = new SolidColorPaint(SKColors.White),
+            DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Middle,
             DataLabelsFormatter = point => point.Context.Series.Name,
-            InnerRadius = 40,
-            MaxRadialColumnWidth = 10,
-            
+            InnerRadius = 60,
+            DataLabelsSize = 20
         },
         new PieSeries<int>
         {
             Values = new int[] {48},
             Name = "Spa",
-            Fill = new SolidColorPaint(SKColor.Parse("#78ef3f")),
+            Fill = new SolidColorPaint(SKColor.Parse("#47d5a6")),
             Stroke = null,
             ShowDataLabels = true,
-            DataLabelsPaint = new SolidColorPaint(SKColors.Black),
+            DataLabelsPaint = new SolidColorPaint(SKColors.White),
             DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Middle,
             DataLabelsFormatter = point => point.Context.Series.Name,
-            InnerRadius = 40
+            InnerRadius = 60,
+            DataLabelsSize = 20
         },
         new PieSeries<int>
         {
             Values = new int[] {25},
-            Name = "Circuit de la Sarthe in France",
+            Name = "Le Mans",
             Stroke = null,
-            Fill = new SolidColorPaint(SKColor.Parse("#78ef3f")),
+            Fill = new SolidColorPaint(SKColor.Parse("#3f76cf")),
             ShowDataLabels = true,
-            DataLabelsPaint = new SolidColorPaint(SKColors.Black),
+            DataLabelsPaint = new SolidColorPaint(SKColors.White),
             DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Middle,
             DataLabelsFormatter = point => point.Context.Series.Name,
-            InnerRadius = 40
+            InnerRadius = 60,
+            DataLabelsSize = 20
         },
         new PieSeries<int>
         {
             Values = new int[] {100},
             Name = "Rainbowroad",
             Stroke = null,
-            Fill = new SolidColorPaint(SKColor.Parse("#78ef3f")),
+            Fill = new SolidColorPaint(SKColor.Parse("#d7ac61")),
             ShowDataLabels = true,
-            DataLabelsPaint = new SolidColorPaint(SKColors.Black),
+            DataLabelsPaint = new SolidColorPaint(SKColors.White),
             DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Middle,
             DataLabelsFormatter = point => point.Context.Series.Name,
-            InnerRadius = 40
+            InnerRadius = 60,
+            DataLabelsSize = 20
+        },
+    };
+    
+    // Pie Chart Test Data - Vehicles
+    public ISeries[] VehicleSeries { get; set; } = new ISeries[]
+    {
+        new PieSeries<int>
+        {
+            Values = new int[] {65},
+            Name = "Ferrari 499P",
+            Fill = new SolidColorPaint(SKColor.Parse("#78ef3f")),
+            Stroke = null,
+            ShowDataLabels = true,
+            DataLabelsPaint = new SolidColorPaint(SKColors.White),
+            DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Middle,
+            DataLabelsFormatter = point => point.Context.Series.Name,
+            InnerRadius = 60,
+            DataLabelsSize = 20
+        },
+        new PieSeries<int>
+        {
+            Values = new int[] {52},
+            Name = "Porsche 963",
+            Fill = new SolidColorPaint(SKColor.Parse("#47d5a6")),
+            Stroke = null,
+            ShowDataLabels = true,
+            DataLabelsPaint = new SolidColorPaint(SKColors.White),
+            DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Middle,
+            DataLabelsFormatter = point => point.Context.Series.Name,
+            InnerRadius = 60,
+            DataLabelsSize = 20
+        },
+        new PieSeries<int>
+        {
+            Values = new int[] {45},
+            Name = "Oreca 07",
+            Stroke = null,
+            Fill = new SolidColorPaint(SKColor.Parse("#3f76cf")),
+            ShowDataLabels = true,
+            DataLabelsPaint = new SolidColorPaint(SKColors.White),
+            DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Middle,
+            DataLabelsFormatter = point => point.Context.Series.Name,
+            InnerRadius = 60,
+            DataLabelsSize = 20
+        },
+        new PieSeries<int>
+        {
+            Values = new int[] {38},
+            Name = "BMW M4 GT3",
+            Stroke = null,
+            Fill = new SolidColorPaint(SKColor.Parse("#d7ac61")),
+            ShowDataLabels = true,
+            DataLabelsPaint = new SolidColorPaint(SKColors.White),
+            DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Middle,
+            DataLabelsFormatter = point => point.Context.Series.Name,
+            InnerRadius = 60,
+            DataLabelsSize = 20
         },
     };
 }

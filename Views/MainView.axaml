@@ -11,20 +11,28 @@
         Height="800"
         Width="1450"
         MinWidth="1450"
-        MinHeight="800">
+        MinHeight="850"
+        Padding="0"
+        BorderThickness="0"
+        UseLayoutRounding="True"
+        Background="{DynamicResource PrimaryBackground}"
+        FontFamily="{DynamicResource FunnelMedium}">
 
     <Design.DataContext>
         <vm:MainViewModel/>
     </Design.DataContext>
     
     <!-- Main Layoutgrid -->
-    <Grid Background="{DynamicResource PrimaryBackground}"
-          ColumnDefinitions="Auto, *, Auto"
+    <Grid ColumnDefinitions="Auto, *"
           RowDefinitions="*, Auto">
         <!-- Main Content on the right side -->
-        <ContentControl Grid.Column="1"
+        <ContentControl Grid.Row="0"
+                        Grid.Column="1"
+                        Margin="0"
+                        Padding="0"
+                        BorderThickness="0"
                         Content="{Binding CurrentPage}"/>
-        <Border Grid.Column="0"
+        <Border Grid.Row="0" Grid.Column="0"
                 Grid.RowSpan="2"
                 Padding="15"
                 Background="{DynamicResource PrimaryMenuBackground}"
@@ -35,7 +43,8 @@
                 <StackPanel Grid.Row="0"
                             Margin="5,5,5,20">
                     <TextBlock Text="LMDriversDash"
-                               FontSize="18"
+                               FontFamily="{DynamicResource FunnelBold}"
+                               FontSize="28"
                                FontWeight="Bold"
                                Foreground="{DynamicResource MenuActiveText}"
                                HorizontalAlignment="Center"/>
@@ -53,7 +62,7 @@
                             Command="{Binding GoToHomeCommand}">
                         <StackPanel Orientation="Horizontal"
                                     Spacing="10">
-                            <TextBlock Text="H" VerticalAlignment="Center"/>
+                            <TextBlock Text="&#xE2C2;" VerticalAlignment="Center" Foreground="{DynamicResource MenuActiveText}" FontFamily="{DynamicResource Phosphor}"/>
                             <TextBlock Text="Home" VerticalAlignment="Center"/>
                         </StackPanel>
                     </Button>
@@ -65,7 +74,7 @@
                             Command="{Binding GoToSessionCommand}">
                         <StackPanel Orientation="Horizontal"
                                     Spacing="10">
-                            <TextBlock Text="S" VerticalAlignment="Center"/>
+                            <TextBlock Text="&#xECF2;" VerticalAlignment="Center" Foreground="{DynamicResource MenuActiveText}" FontFamily="{DynamicResource Phosphor}"/>
                             <TextBlock Text="Session" VerticalAlignment="Center"/>
                         </StackPanel>
                     </Button>
@@ -77,15 +86,55 @@
                             Command="{Binding GoToDriveCommand}">
                         <StackPanel Orientation="Horizontal"
                                     Spacing="10">
-                            <TextBlock Text="D" VerticalAlignment="Center"/>
+                            <TextBlock Text="&#xE9AC;" VerticalAlignment="Center" Foreground="{DynamicResource MenuActiveText}" FontFamily="{DynamicResource Phosphor}"/>
                             <TextBlock Text="Drive" VerticalAlignment="Center"/>
                         </StackPanel>
                     </Button>
+                    <Expander HorizontalAlignment="Stretch"
+                              HorizontalContentAlignment="Center"
+                              Margin="0,0,0,0"
+                              Padding="0, 0"
+                              Classes="SettingsExpander">
+                        <Expander.Header>
+                            <StackPanel Orientation="Horizontal"
+                                        Spacing="10">
+                                <TextBlock Text="&#xE228;" VerticalAlignment="Center" Foreground="{DynamicResource RacesGreen}" FontFamily="{DynamicResource Phosphor}"/>
+                                <TextBlock Text="Settings" VerticalAlignment="Center"/>    
+                            </StackPanel>
+                            
+                        </Expander.Header>
+                        <StackPanel>
+                            <Button Classes="MenuButton">
+                                <StackPanel>
+                                    <TextBlock Text=""/>
+                                    <TextBlock Text="Player"/>
+                                </StackPanel>
+                            </Button>
+                            <Button Classes="MenuButton">
+                                <StackPanel>
+                                    <TextBlock Text=""/>
+                                    <TextBlock Text="Game"/>
+                                </StackPanel>
+                            </Button>
+                            <Button Classes="MenuButton">
+                                <StackPanel>
+                                    <TextBlock Text=""/>
+                                    <TextBlock Text="HTTP-Client"/>
+                                </StackPanel>
+                            </Button>
+                            <Button Classes="MenuButton">
+                                <StackPanel>
+                                    <TextBlock Text=""/>
+                                    <TextBlock Text="UDP-Client"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </Expander>
                 </StackPanel>
             </Grid>
         </Border>
         
-        <Border Grid.Row="2"
+        <Border Grid.Row="1"
                 Grid.Column="1"
                 HorizontalAlignment="Stretch"
                 Background="{DynamicResource InfoCardBackground}"
@@ -96,7 +145,7 @@
                 <StackPanel Grid.Column="0"
                             Orientation="Horizontal"
                             Margin="10,5,10,5">
-                    <TextBlock Text="HttpClient Connection"
+                    <TextBlock Text="HTTP-Client Connection"
                                Foreground="{DynamicResource PrimaryText}"
                                Margin="0,0,10,0"/>
                     <Ellipse Width="12" Height="12" Fill="{Binding HttpConnectionColor}"/>
@@ -104,7 +153,7 @@
                 <StackPanel Grid.Column="1" 
                             Orientation="Horizontal"
                             Margin="0,5,10,5">
-                    <TextBlock Text="UdpClient Connection"
+                    <TextBlock Text="UDP-Client Connection"
                                Foreground="{DynamicResource PrimaryText}"
                                Margin="0,0,10,0"/>
                     <Ellipse Width="12" Height="12" Fill="{Binding UdpConnectionColor}"/>
@@ -112,7 +161,7 @@
                 <StackPanel Grid.Column="3" HorizontalAlignment="Stretch"
                             Orientation="Horizontal"
                             Margin="0,5,10,5">
-                    <TextBlock Text="Http Game State:"
+                    <TextBlock Text="HTTP Game State:"
                                Foreground="{DynamicResource PrimaryText}"/>
                     <TextBlock Text="{Binding HttpGameState}"
                                Foreground="{DynamicResource MenuActiveText}"
