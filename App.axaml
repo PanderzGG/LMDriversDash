@@ -12,6 +12,7 @@
     <Application.Styles>
         <FluentTheme />
         <StyleInclude Source="Styles/AppDefaultStyle.axaml"></StyleInclude>
+        <StyleInclude Source="avares://Avalonia.Controls.DataGrid/Themes/Fluent.xaml"/>
     </Application.Styles>
              
     <Application.Resources>
@@ -21,8 +22,17 @@
         <SolidColorBrush x:Key="MenuHoverBackground">#717171</SolidColorBrush>
         <SolidColorBrush x:Key="MenuActiveText">#78ef3f</SolidColorBrush>
         <SolidColorBrush x:Key="InfoCardBackground">#282828</SolidColorBrush>
+        <SolidColorBrush x:Key="InfoCardSecondaryTextPositive">#00c4de</SolidColorBrush>
+        <SolidColorBrush x:Key="InfoCardBackgroundSecondaryColorPositive">#5000c4de</SolidColorBrush>
+        <SolidColorBrush x:Key="InfoCardBorderSecondaryColorPositive">#8000c4de</SolidColorBrush>
+        
         <SolidColorBrush x:Key="BorderBrush">#3f3f3f</SolidColorBrush>
-        <Color x:Key="MenuActiveBackgroundSemiTransparent">#5078ef3f</Color>
+        <SolidColorBrush x:Key="SmallTextColor">#717171</SolidColorBrush>
+        <SolidColorBrush x:Key="MenuActiveBackgroundSemiTransparent">#5078ef3f</SolidColorBrush>
+        
+        <FontFamily x:Key="FunnelMedium">/Assets/Fonts/FunnelSans-Medium.ttf#Funnel Sans Medium</FontFamily>
+        <FontFamily x:Key="FunnelBold">/Assets/Fonts/FunnelSans-Bold.ttf#Funnel Sans</FontFamily>
+        <FontFamily x:Key="Phosphor">/Assets/Fonts/Phosphor-Bold.ttf#Phosphor-Bold</FontFamily>
     </Application.Resources>
              
 </Application>
