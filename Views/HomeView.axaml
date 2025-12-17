@@ -8,7 +8,10 @@
              x:DataType="vm:HomeViewModel"
              x:Class="LMDriversDash.Views.HomeView"
              MinWidth="1200"
-             MaxHeight="820"
+             MaxHeight="826"
+             Padding="0"
+             Margin="0"
+             BorderThickness="0"
              HorizontalAlignment="Stretch"
              VerticalAlignment="Stretch">
     <Design.DataContext>
@@ -18,7 +21,7 @@
     <Grid Background="{DynamicResource PrimaryBackground}"
           RowDefinitions="Auto, *"
           ColumnDefinitions="Auto, *, *"
-          Margin="0,0,0,0">
+          VerticalAlignment="Stretch">
         <Border Grid.Row="0"
                 Grid.Column="0"
                 Grid.ColumnSpan="3"
@@ -64,49 +67,51 @@
                          Columns="4"
                          ColumnSpacing="90"
                          >
-                    <Border Classes="HomeCard" BoxShadow="{StaticResource ShadowGreenBox}">
+                    <Border Classes="HomeCard" BoxShadow="-5 5 0 0 Gray">
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal"
+                                        Margin="20,20,0,0"
+                                        Spacing="70">
+                                <Border Background="{DynamicResource RacesGreenbg}"
+                                        CornerRadius="6">
+                                    <TextBlock Foreground="{DynamicResource RacesGreen}"
+                                               FontFamily="{DynamicResource Phosphor}"
+                                               FontSize="25"
+                                               Text="&#xEA38;"
+                                               Padding="8"/>    
+                                </Border>
+                                <Border Background="{DynamicResource InfoCardBackgroundSecondaryColorPositive}"
+                                        BorderThickness="1"
+                                        VerticalAlignment="Center"
+                                        CornerRadius="25"
+                                        Margin="0,0,20,0"
+                                        Padding="5,0,5,0">
+                                    <StackPanel>
+                                        <TextBlock Text="+12%"
+                                                   FontFamily="{DynamicResource FunnelMedium}"
+                                                   Foreground="{DynamicResource InfoCardSecondaryTextPositive}"/>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical"
+                                        Margin="20,8,0,15">
+                                <TextBlock Text="247"
+                                           Classes="SmallHomeCardPrimaryText"/>
+                                <TextBlock Text="Total LMDD Races"
+                                           Classes="SmallHomeCardSmallText"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                    <Border Classes="HomeCard" BoxShadow="-5 5 0 0 Gray">
                     <StackPanel Orientation="Vertical">
                         <StackPanel Orientation="Horizontal"
-                                    Margin="20,20,0,0">
-                            <Border Background="{DynamicResource RacesGreenbg}"
-                                    CornerRadius="6">
-                                <TextBlock Foreground="{DynamicResource RacesGreen}"
-                                           FontFamily="{DynamicResource Phosphor}"
-                                           FontSize="22"
-                                           Text="&#xEA38;"
-                                           Padding="8"/>    
-                            </Border>
-                            <Border Background="{DynamicResource InfoCardBackgroundSecondaryColorPositive}"
-                                    BorderThickness="1"
-                                    VerticalAlignment="Center"
-                                    CornerRadius="25"
-                                    Margin="50,0,20,0"
-                                    Padding="5,0,5,0">
-                                <StackPanel>
-                                    <TextBlock Text="+12%"
-                                               FontFamily="{DynamicResource FunnelMedium}"
-                                               Foreground="{DynamicResource InfoCardSecondaryTextPositive}"/>
-                                </StackPanel>
-                            </Border>
-                        </StackPanel>
-                        <StackPanel Orientation="Vertical"
-                                    Margin="20,8,0,15">
-                            <TextBlock Text="247"
-                                       Classes="SmallHomeCardPrimaryText"/>
-                            <TextBlock Text="Total Recorded LMDD Races"
-                                       Classes="SmallHomeCardSmallText"/>
-                        </StackPanel>
-                    </StackPanel>
-                </Border>
-                <Border Classes="HomeCard" BoxShadow="{StaticResource ShadowTurkBox}">
-                    <StackPanel Orientation="Vertical">
-                        <StackPanel Orientation="Horizontal"
-                                    Margin="20,20,0,0">
+                                    Margin="20,20,0,0"
+                                    Spacing="70">
                             <Border Background="{DynamicResource InfoCardBackgroundSecondaryColorPositive}"
                                     CornerRadius="6">
                                 <TextBlock Foreground="{DynamicResource TrophyTurk}"
                                            FontFamily="{DynamicResource Phosphor}"
-                                           FontSize="22"
+                                           FontSize="25"
                                            Text="&#xE67E;"
                                            Padding="8"/>    
                             </Border>
@@ -114,7 +119,6 @@
                                     BorderThickness="1"
                                     VerticalAlignment="Center"
                                     CornerRadius="25"
-                                    Margin="50,0,20,0"
                                     Padding="5,0,5,0">
                                 <StackPanel>
                                     <TextBlock Text="+6%"
@@ -132,15 +136,16 @@
                         </StackPanel>
                     </StackPanel>
                 </Border>
-                <Border Classes="HomeCard" BoxShadow="{StaticResource ShadowBlueBox}">
+                    <Border Classes="HomeCard" BoxShadow="-5 5 0 0 Gray">
                     <StackPanel Orientation="Vertical">
                         <StackPanel Orientation="Horizontal"
-                                    Margin="20,20,0,0">
+                                    Margin="20,20,0,0"
+                                    Spacing="70">
                             <Border Background="{DynamicResource PercentBluebg}"
                                     CornerRadius="6">
                                 <TextBlock Foreground="{DynamicResource PercentBlue}"
                                            FontFamily="{DynamicResource Phosphor}"
-                                           FontSize="22"
+                                           FontSize="25"
                                            Text="&#xE3B6;"
                                            Padding="8"/>    
                             </Border>
@@ -148,7 +153,6 @@
                                     BorderThickness="1"
                                     VerticalAlignment="Center"
                                     CornerRadius="25"
-                                    Margin="50,0,20,0"
                                     Padding="5,0,5,0">
                                 <StackPanel>
                                     <TextBlock Text="+6%"
@@ -166,15 +170,16 @@
                         </StackPanel>
                     </StackPanel>
             </Border>
-                <Border Classes="HomeCard" BoxShadow="{StaticResource ShadowBronzeBox}">
+                    <Border Classes="HomeCard" BoxShadow="-5 5 0 0 Gray">
                     <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal"
-                                        Margin="20,20,0,0">
+                                        Margin="20,20,0,0"
+                                        Spacing="70">
                                 <Border Background="{DynamicResource MedalBronzebg}"
                                         CornerRadius="6">
                                     <TextBlock Foreground="{DynamicResource MedalBronze}"
                                                FontFamily="{DynamicResource Phosphor}"
-                                               FontSize="22"
+                                               FontSize="25"
                                                Text="&#xE320;"
                                                Padding="8"/>    
                                 </Border>
@@ -182,7 +187,6 @@
                                         BorderThickness="1"
                                         VerticalAlignment="Center"
                                         CornerRadius="25"
-                                        Margin="50,0,20,0"
                                         Padding="5,0,5,0">
                                     <StackPanel>
                                         <TextBlock Text="same"
@@ -200,7 +204,7 @@
                             </StackPanel>
                     </StackPanel>
                 </Border>
-            </UniformGrid>
+                </UniformGrid>
             </Border>
             <!-- Lower Row -->
             <Border Grid.Row="1"
@@ -209,6 +213,7 @@
                     Classes="HomeGridCard"
                     Height="555"
                     VerticalAlignment="Top"
+                    BoxShadow="-5 5 0 0 Gray"
                     >
                 <Grid Margin="15"
                       RowDefinitions="Auto, Auto, *">
@@ -273,14 +278,15 @@
                         Height="270"
                         Width="380"
                         ClipToBounds="False"
-                        Padding="8">
+                        Padding="8"
+                        BoxShadow="-5 5 0 0 Gray">
                     <StackPanel>
                         <TextBlock Text="Most Driven Tracks"
                                    Classes="SmallHomeCardPrimaryText"
                                    HorizontalAlignment="Stretch"
                                    Margin="0,0,0,5"/>
                         <lvc:PieChart Series="{Binding TrackSeries}"
-                                      Height="220"
+                                      Height="200"
                                       Width="220"
                                       Background="{DynamicResource InfoCardBackground}"
                                       VerticalAlignment="Center"
@@ -295,14 +301,15 @@
                         Height="270"
                         Width="380"
                         ClipToBounds="False"
-                        Padding="8">
+                        Padding="8"
+                        BoxShadow="-5 5 0 0 Gray">
                     <StackPanel>
                         <TextBlock Text="Most Used Vehicles"
                                    Classes="SmallHomeCardPrimaryText"
                                    HorizontalAlignment="Stretch"
                                    Margin="0,0,0,5"/>
                         <lvc:PieChart Series="{Binding VehicleSeries}"
-                                      Height="220"
+                                      Height="200"
                                       Width="220"
                                       Background="{DynamicResource InfoCardBackground}"
                                       VerticalAlignment="Center"

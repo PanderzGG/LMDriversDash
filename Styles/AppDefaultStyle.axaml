@@ -42,6 +42,45 @@
         <Setter Property="Foreground" Value="{DynamicResource MenuActiveText}"></Setter>
     </Style>
     
+    <Style Selector="Expander.SettingsExpander">
+        <Setter Property="Background" Value="{DynamicResource PrimaryMenuBackground}"></Setter>
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryText}"></Setter>
+    </Style>
+    
+    <Style Selector="Expander.SettingsExpander Border">
+        <Setter Property="CornerRadius" Value="6"/>
+        <Setter Property="Padding" Value="8"/>
+        <Setter Property="BorderThickness" Value="0"></Setter>
+    </Style>
+    
+    <Style Selector="Expander.SettingsExpander /template/ ToggleButton:not(:pointerover):not(:pressed) /template/ Border#ExpandCollapseChevronBorder">
+        <Setter Property="Background" Value="{DynamicResource RacesGreenbg}" />
+    </Style>
+    <!--  Chevron Icon Normal State  -->
+    <Style Selector="Expander /template/ ToggleButton:not(:pointerover):not(:pressed) /template/ Path#ExpandCollapseChevron">
+        <Setter Property="Stroke" Value="{DynamicResource RacesGreen}" />
+    </Style>
+    
+    <!--  Chevron Button Hover State  -->
+    <Style Selector="Expander /template/ ToggleButton:pointerover /template/ Border#ExpandCollapseChevronBorder">
+        <Setter Property="Background" Value="{DynamicResource RacesGreenbg}" />
+    </Style>
+    <Style Selector="Expander /template/ ToggleButton:pointerover /template/ Path#ExpandCollapseChevron">
+        <Setter Property="Stroke" Value="{DynamicResource RacesGreen}" />
+    </Style>
+    
+    
+    <Style Selector="Expander ToggleButton">
+        <Setter Property="Background" Value="{DynamicResource PrimaryMenuBackground}"></Setter>
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryText}"></Setter>
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="FontSize" Value="20"></Setter>
+        <Setter Property="CornerRadius" Value="5"></Setter>
+    </Style>
+    
+    
+    
+    
     <!-- HomeCard Styles -->
     <Style Selector="Border.HomeCard">
         <Setter Property="Background" Value="{DynamicResource InfoCardBackground}"></Setter>
@@ -71,12 +110,12 @@
     <!--Primary Homecard Text -->
     <Style Selector="TextBlock.SmallHomeCardPrimaryText">
         <Setter Property="FontFamily" Value="{DynamicResource FunnelBold}"></Setter>
-        <Setter Property="FontSize" Value="25"></Setter>
+        <Setter Property="FontSize" Value="35"></Setter>
         <Setter Property="Foreground" Value="{DynamicResource PrimaryText}"></Setter>
     </Style>
     <Style Selector="TextBlock.SmallHomeCardSmallText">
         <Setter Property="FontFamily" Value="{DynamicResource FunnelMedium}"></Setter>
-        <Setter Property="FontSize" Value="10"></Setter>
+        <Setter Property="FontSize" Value="15"></Setter>
         <Setter Property="Foreground" Value="{DynamicResource SmallTextColor}"></Setter>
     </Style>
     

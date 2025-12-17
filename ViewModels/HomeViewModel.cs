@@ -106,46 +106,46 @@ public partial class HomeViewModel : PageViewModel
             DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Middle,
             DataLabelsFormatter = point => point.Context.Series.Name,
             InnerRadius = 60,
-            DataLabelsSize = 12
+            DataLabelsSize = 20
         },
         new PieSeries<int>
         {
             Values = new int[] {48},
             Name = "Spa",
-            Fill = new SolidColorPaint(new SKColor(120, 239, 63, 200)),
+            Fill = new SolidColorPaint(SKColor.Parse("#47d5a6")),
             Stroke = null,
             ShowDataLabels = true,
             DataLabelsPaint = new SolidColorPaint(SKColors.White),
             DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Middle,
             DataLabelsFormatter = point => point.Context.Series.Name,
             InnerRadius = 60,
-            DataLabelsSize = 12
+            DataLabelsSize = 20
         },
         new PieSeries<int>
         {
             Values = new int[] {25},
             Name = "Le Mans",
             Stroke = null,
-            Fill = new SolidColorPaint(new SKColor(120, 239, 63, 150)),
+            Fill = new SolidColorPaint(SKColor.Parse("#3f76cf")),
             ShowDataLabels = true,
             DataLabelsPaint = new SolidColorPaint(SKColors.White),
             DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Middle,
             DataLabelsFormatter = point => point.Context.Series.Name,
             InnerRadius = 60,
-            DataLabelsSize = 12
+            DataLabelsSize = 20
         },
         new PieSeries<int>
         {
             Values = new int[] {100},
             Name = "Rainbowroad",
             Stroke = null,
-            Fill = new SolidColorPaint(new SKColor(120, 239, 63, 100)),
+            Fill = new SolidColorPaint(SKColor.Parse("#d7ac61")),
             ShowDataLabels = true,
             DataLabelsPaint = new SolidColorPaint(SKColors.White),
             DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Middle,
             DataLabelsFormatter = point => point.Context.Series.Name,
             InnerRadius = 60,
-            DataLabelsSize = 12
+            DataLabelsSize = 20
         },
     };
     
@@ -163,59 +163,46 @@ public partial class HomeViewModel : PageViewModel
             DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Middle,
             DataLabelsFormatter = point => point.Context.Series.Name,
             InnerRadius = 60,
-            DataLabelsSize = 11
+            DataLabelsSize = 20
         },
         new PieSeries<int>
         {
             Values = new int[] {52},
             Name = "Porsche 963",
-            Fill = new SolidColorPaint(new SKColor(120, 239, 63, 210)),
+            Fill = new SolidColorPaint(SKColor.Parse("#47d5a6")),
             Stroke = null,
             ShowDataLabels = true,
             DataLabelsPaint = new SolidColorPaint(SKColors.White),
             DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Middle,
             DataLabelsFormatter = point => point.Context.Series.Name,
             InnerRadius = 60,
-            DataLabelsSize = 11
+            DataLabelsSize = 20
         },
         new PieSeries<int>
         {
             Values = new int[] {45},
             Name = "Oreca 07",
             Stroke = null,
-            Fill = new SolidColorPaint(new SKColor(120, 239, 63, 170)),
+            Fill = new SolidColorPaint(SKColor.Parse("#3f76cf")),
             ShowDataLabels = true,
             DataLabelsPaint = new SolidColorPaint(SKColors.White),
             DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Middle,
             DataLabelsFormatter = point => point.Context.Series.Name,
             InnerRadius = 60,
-            DataLabelsSize = 11
+            DataLabelsSize = 20
         },
         new PieSeries<int>
         {
             Values = new int[] {38},
             Name = "BMW M4 GT3",
             Stroke = null,
-            Fill = new SolidColorPaint(new SKColor(120, 239, 63, 130)),
+            Fill = new SolidColorPaint(SKColor.Parse("#d7ac61")),
             ShowDataLabels = true,
             DataLabelsPaint = new SolidColorPaint(SKColors.White),
             DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Middle,
             DataLabelsFormatter = point => point.Context.Series.Name,
             InnerRadius = 60,
-            DataLabelsSize = 11
-        },
-        new PieSeries<int>
-        {
-            Values = new int[] {30},
-            Name = "Toyota GR010",
-            Stroke = null,
-            Fill = new SolidColorPaint(new SKColor(120, 239, 63, 90)),
-            ShowDataLabels = true,
-            DataLabelsPaint = new SolidColorPaint(SKColors.White),
-            DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Middle,
-            DataLabelsFormatter = point => point.Context.Series.Name,
-            InnerRadius = 60,
-            DataLabelsSize = 11
+            DataLabelsSize = 20
         },
     };
 }
